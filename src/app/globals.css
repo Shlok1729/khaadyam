@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FAF9F5;
+  --foreground: #1D1A17;
+  --burgundy: #5F252D;
+  --burgundy-dark: #461920;
+  --burgundy-light: #EADCD8;
+  --parchment: #F4EFE6;
+  --parchment-deep: #E9DFCE;
+  --card-bg: #FBF8F2;
+  --border-subtle: #D9CFBF;
+  --border-card: #E2D9CA;
+  --text-muted: #5A5048;
+  --text-caption: #6B6157;
+  
+  /* The 8 Family Accent Colors */
+  --fam-chutney-pudi: #C99436;
+  --fam-chutney-gojju: #506D41;
+  --fam-uppinakayi: #B45431;
+  --fam-bath-pudi: #764D30;
+  --fam-sandige: #C3B59F;
+  --fam-kurukalu: #302A25;
+  --fam-sihi: #2F3F6F;
+  --fam-malts: #663F52;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-serif-brand {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+}
+
+.font-kannada {
+  font-family: var(--font-kannada), -apple-system, sans-serif;
+}
+
+/* Custom smooth transitions */
+.transition-smooth {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Subtle scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF9F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #D9CFBF;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B6A995;
+}
