@@ -34,12 +34,12 @@ export function SubscriptionSection() {
         {/* Section Header */}
         <div className="flex flex-col gap-4 max-w-3xl">
           <h2 className="font-serif-brand text-3xl md:text-5xl text-[#F4EFE6] font-normal">
-            {lang === "kn" ? "ಬರಿದಾಗದ ಭರಣಿ · ಸದಾ ನಿಮ್ಮ ತಟ್ಟೆಗೆ" : "Never an empty jar."}
+            {lang === "kn" ? "ಪ್ರತಿ ತಿಂಗಳೂ ಬಡಿಸ್ತೀನಿ" : "Every month, we serve you."}
           </h2>
           <p className="text-base md:text-xl text-[#EADCD8] font-light leading-relaxed">
             {lang === "kn"
-              ? "ಏನು ಬೇಕು ಮತ್ತು ಎಷ್ಟು ಅವಧಿಗೆ ಎಂದು ಆರಿಸಿ. ಮರುಆರ್ಡರ್ ಮಾಡುವ ಚಿಂತೆಯೇ ಇಲ್ಲದೆ ತಾಜಾ ರುಚಿ ನಿಮ್ಮ ಹೊಸ್ತಿಲಿಗೆ ಸದಾ ತಲುಪುತ್ತದೆ."
-              : "Choose your staples, set your tenure, and forget re-ordering. Pure hand-pounded traditions arrive freshly packed along The Step."}
+              ? "ಏನು ಬರಬೇಕು ಮತ್ತು ಎಷ್ಟು ತಿಂಗಳು ಎಂದು ಆರಿಸಿ. ಮರುಆರ್ಡರ್ ಮಾಡುವ ಚಿಂತೆಯೇ ಇಲ್ಲದೆ ಪ್ರತಿ ತಿಂಗಳು ತಾಜಾ ಪೆಟ್ಟಿಗೆ ನಿಮ್ಮ ಮನೆಗೆ ತಲುಪುತ್ತದೆ."
+              : "Choose what comes, choose how long, and never think about re-ordering. A freshly packed box arrives along The Step every month."}
           </p>
         </div>
 
@@ -49,13 +49,13 @@ export function SubscriptionSection() {
             <div>
               <span className="text-xs uppercase tracking-widest text-[#EADCD8]/80 font-medium">
                 {lang === "kn"
-                  ? "ಅವಧಿ ಆರಿಸಿ · ಸಂಪೂರ್ಣ ಯೋಜನೆಗೆ ಒಂದೇ ನಿಗದಿತ ಬೆಲೆ"
-                  : "Choose tenure · One locked price for your whole journey"}
+                  ? "ಅವಧಿ ಆರಿಸಿ · ಇಡೀ ಅವಧಿಗೆ ಒಂದೇ ನಿಗದಿತ ಮೊತ್ತ"
+                  : "Choose tenure · One fixed amount for the whole stretch"}
               </span>
               <p className="text-sm text-[#EADCD8] mt-1">
                 {lang === "kn"
-                  ? "ನಿಮ್ಮ ಬೆಲೆಯು ಸಂಪೂರ್ಣ ಅವಧಿಗೆ ಬದಲಾಗದೆ ಸ್ಥಿರವಾಗಿರುತ್ತದೆ."
-                  : "Your price is locked and guaranteed across the entire plan."}
+                  ? "ನಿಮ್ಮ ಮಾಸಿಕ ಬೆಲೆ ಸಂಪೂರ್ಣ ಅವಧಿಗೆ ಬದಲಾಗದೆ ಸ್ಥಿರವಾಗಿರುತ್ತದೆ."
+                  : "Your monthly price is locked and held for the full duration."}
               </p>
             </div>
 
@@ -69,7 +69,7 @@ export function SubscriptionSection() {
                     : "text-[#EADCD8] hover:text-white"
                 }`}
               >
-                {lang === "kn" ? "೬ ಕಂತುಗಳು" : "6 Months"}
+                {lang === "kn" ? "೬ ತಿಂಗಳು" : "6 months"}
               </button>
               <button
                 onClick={() => setSubscriptionTenure(9)}
@@ -79,7 +79,7 @@ export function SubscriptionSection() {
                     : "text-[#EADCD8] hover:text-white"
                 }`}
               >
-                <span>{lang === "kn" ? "೯ ಕಂತುಗಳು" : "9 Months"}</span>
+                <span>{lang === "kn" ? "೯ ತಿಂಗಳು" : "9 months"}</span>
                 <span className="text-[10px] bg-[#5F252D] text-[#EADCD8] px-1.5 py-0.5 rounded-full">
                   {lang === "kn" ? "೫% ರಿಯಾಯಿತಿ" : "Save 5%"}
                 </span>
@@ -92,7 +92,7 @@ export function SubscriptionSection() {
                     : "text-[#EADCD8] hover:text-white"
                 }`}
               >
-                <span>{lang === "kn" ? "೧ ವರ್ಷ (೧೨ ಕಂತು)" : "1 Year (12 Boxes)"}</span>
+                <span>{lang === "kn" ? "೧೨ ತಿಂಗಳು" : "12 months"}</span>
                 <span className="text-[10px] bg-[#5F252D] text-[#EADCD8] px-1.5 py-0.5 rounded-full font-bold">
                   {lang === "kn" ? "೧೦% ರಿಯಾಯಿತಿ" : "Save 10%"}
                 </span>
@@ -105,9 +105,7 @@ export function SubscriptionSection() {
             <div className="flex items-center justify-between text-xs text-[#EADCD8] font-medium">
               <span>{lang === "kn" ? "ಹೆಜ್ಜೆ ಗುರುತು (The Step)" : "The Step · Dispatch Journey"}</span>
               <span className="font-semibold text-[#C99436]">
-                {lang === "kn"
-                  ? `${subscriptionTenure === 12 ? "೧ ವರ್ಷದ ಯೋಜನೆ" : `${subscriptionTenure} ಪೆಟ್ಟಿಗೆಗಳ ಪ್ರಯಾಣ`}`
-                  : `${subscriptionTenure === 12 ? "1-Year Commitment" : `${subscriptionTenure}-Box Journey`}`}
+                {lang === "kn" ? `${subscriptionTenure} ತಿಂಗಳ ಯೋಜನೆ` : `${subscriptionTenure} Month Commitment`}
               </span>
             </div>
 
@@ -120,11 +118,11 @@ export function SubscriptionSection() {
 
             <div className="flex justify-between text-[11px] text-[#EADCD8]/70 pt-1">
               <span className="text-[#C99436] font-semibold">
-                {lang === "kn" ? "ಪೆಟ್ಟಿಗೆ ೧ (ಆರಂಭ)" : "Box 1 (First Box)"}
+                {lang === "kn" ? "ತಿಂಗಳು ೧ (ಮೊದಲ ಪೆಟ್ಟಿಗೆ)" : "Month 1 (First Box)"}
               </span>
-              {subscriptionTenure >= 6 && <span>{lang === "kn" ? "ಪೆಟ್ಟಿಗೆ ೬" : "Box 6"}</span>}
-              {subscriptionTenure >= 9 && <span>{lang === "kn" ? "ಪೆಟ್ಟಿಗೆ ೯" : "Box 9"}</span>}
-              <span>{lang === "kn" ? `ಪೆಟ್ಟಿಗೆ ${subscriptionTenure}` : `Box ${subscriptionTenure}`}</span>
+              {subscriptionTenure >= 6 && <span>{lang === "kn" ? "ತಿಂಗಳು ೬" : "Month 6"}</span>}
+              {subscriptionTenure >= 9 && <span>{lang === "kn" ? "ತಿಂಗಳು ೯" : "Month 9"}</span>}
+              <span>{lang === "kn" ? `ತಿಂಗಳು ${subscriptionTenure}` : `Month ${subscriptionTenure}`}</span>
             </div>
           </div>
 
@@ -132,7 +130,7 @@ export function SubscriptionSection() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
             <div className="flex items-center gap-2 text-xs text-[#EADCD8]">
               <Calendar className="w-4 h-4 text-[#C99436]" />
-              <span>{lang === "kn" ? "ಆಗಮನದ ತಾರೀಕು:" : "Arrives at your home:"}</span>
+              <span>{lang === "kn" ? "ಮನೆಗೆ ತಲುಪುವ ದಿನಾಂಕ:" : "Arrives at your home on:"}</span>
             </div>
 
             <div className="flex items-center gap-2">
@@ -146,7 +144,7 @@ export function SubscriptionSection() {
                       : "bg-[#311116] text-[#EADCD8] border-[#76303B] hover:border-[#C99436]"
                   }`}
                 >
-                  {lang === "kn" ? `ಪ್ರತಿ ${day}ನೇ ತಾರೀಕು` : `Every ${day}th`}
+                  {lang === "kn" ? `ಪ್ರತಿ ತಿಂಗಳ ${day}ನೇ ತಾರೀಕು` : `The ${day}th of every month`}
                 </button>
               ))}
             </div>
@@ -188,7 +186,7 @@ export function SubscriptionSection() {
                 : "text-[#EADCD8] hover:text-white"
             }`}
           >
-            <span>{lang === "kn" ? "೨ · ವಿಭಾಗವಾರು ಸರದಿ: ೮ ಕುಟುಂಬಗಳ ರುಚಿ" : "2 · By category: rotate the 8 families"}</span>
+            <span>{lang === "kn" ? "೨ · ವಿಭಾಗವಾರು ಚಂದಾದಾರಿಕೆ" : "2 · By category: one family, every month"}</span>
           </button>
         </div>
 
@@ -327,7 +325,7 @@ export function SubscriptionSection() {
               <div className="bg-[#F4EFE6] text-[#1D1A17] rounded-3xl p-6 md:p-8 flex flex-col justify-between gap-6 shadow-2xl border-4 border-[#C99436]/40 sticky top-28">
                 <div>
                   <div className="flex items-center justify-between text-xs font-semibold text-[#5F252D] uppercase tracking-wider mb-2">
-                    <span>{lang === "kn" ? "ನಿಮ್ಮ ನಿಗದಿತ ಮೊತ್ತ" : "Recurring Box Price"}</span>
+                    <span>{lang === "kn" ? "ನಿಮ್ಮ ತಿಂಗಳ ಮೊತ್ತ" : "Your Monthly Amount"}</span>
                   </div>
 
                   <div className="flex items-baseline gap-2 mt-1">
@@ -335,14 +333,14 @@ export function SubscriptionSection() {
                       ₹{monthlyAmount}
                     </span>
                     <span className="text-sm text-[#6B6157] font-medium">
-                      {lang === "kn" ? "/ ಪೆಟ್ಟಿಗೆಗೆ" : "/ delivery"}
+                      {lang === "kn" ? "/ ತಿಂಗಳು" : "/ month"}
                     </span>
                   </div>
 
                   <p className="text-xs text-[#5A5048] mt-2 leading-relaxed">
                     {lang === "kn"
-                      ? `${subscriptionTenure} ವಿತರಣೆಗಳಿಗೂ ಇದೇ ಬೆಲೆ. ಪ್ರತಿ ${dispatchDay}ನೇ ತಾರೀಕಿಗೆ ನೇರವಾಗಿ ನಿಮ್ಮ ಮನೆಗೆ ಬರುತ್ತದೆ.`
-                      : `Fixed for all ${subscriptionTenure} dispatches. Arrives reliably every ${dispatchDay}th along The Step.`}
+                      ? `${subscriptionTenure} ತಿಂಗಳಿಗೂ ಇದೇ ಬೆಲೆ. ಯಾವುದೇ ದಿಢೀರ್ ಬೆಲೆ ಏರಿಕೆ ಇರುವುದಿಲ್ಲ.`
+                      : `Fixed for the whole ${subscriptionTenure} months. Arrives automatically on the ${dispatchDay}th of each month along The Step.`}
                   </p>
                 </div>
 
@@ -350,15 +348,13 @@ export function SubscriptionSection() {
                   <div className="flex justify-between">
                     <span>{lang === "kn" ? "ಆಯ್ಕೆಯ ಅವಧಿ:" : "Tenure commitment:"}</span>
                     <span className="font-semibold text-[#1D1A17]">
-                      {subscriptionTenure === 12
-                        ? (lang === "kn" ? "೧ ವರ್ಷ (೧೨ ವಿತರಣೆಗಳು)" : "1 Year (12 Boxes)")
-                        : `${subscriptionTenure} ${lang === "kn" ? "ವಿತರಣೆಗಳು" : "Deliveries"}`}
+                      {subscriptionTenure} {lang === "kn" ? "ತಿಂಗಳು" : "months"}
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span>{lang === "kn" ? "ವಿತರಣಾ ಶುಲ್ಕ:" : "Delivery cost:"}</span>
                     <span className="font-semibold text-[#506D41]">
-                      {lang === "kn" ? "ಸದಾ ಉಚಿತ" : "Always Free"}
+                      {lang === "kn" ? "ಸದಾ ಉಚಿತ" : "Free every month"}
                     </span>
                   </div>
                   <div className="flex justify-between">
@@ -373,7 +369,7 @@ export function SubscriptionSection() {
                     <span>
                       {lang === "kn"
                         ? "ಯುಪಿಐ ಆಟೋಪೇ ಮ್ಯಾಂಡೇಟ್ ಸೆಟ್ ಆಗಿದೆ!"
-                        : "UPI AutoPay Mandate Set! Welcome to the Khaadyam family."}
+                        : "UPI AutoPay Mandate Set! Welcome to Khaadyam Monthly Family."}
                     </span>
                   </div>
                 ) : (
@@ -381,7 +377,7 @@ export function SubscriptionSection() {
                     onClick={() => handleStartSubscription("Custom List", monthlyAmount)}
                     className="w-full bg-[#5F252D] hover:bg-[#461920] text-[#F4EFE6] py-4 rounded-full text-sm font-semibold transition-smooth shadow-md cursor-pointer flex items-center justify-center gap-2 group"
                   >
-                    <span>{lang === "kn" ? "ಚಂದಾದಾರಿಕೆ ಪ್ರಾರಂಭಿಸಿ" : "Start your table ritual"}</span>
+                    <span>{lang === "kn" ? "ತಿಂಗಳ ಪೆಟ್ಟಿಗೆ ಪ್ರಾರಂಭಿಸಿ" : "Set up monthly box"}</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-smooth text-[#C99436]" />
                   </button>
                 )}
