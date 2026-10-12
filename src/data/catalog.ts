@@ -344,10 +344,10 @@ export const MEAL_PLATES: MealPlate[] = [
   {
     id: "idli-morning",
     slug: "idli-morning",
-    title: "Idli morning",
-    kannadaTitle: "ಇಡ್ಲಿ ಬೆಳಿಗ್ಗೆ",
+    title: "Idli/dosa morning",
+    kannadaTitle: "ಇಡ್ಲಿ/ದೋಸೆ ಬೆಳಿಗ್ಗೆ",
     description: "A podi, a chutney, a spoon of ghee.",
-    kannadaDescription: "ಬಿಸಿ ಇಡ್ಲಿ, ಎರಡು ವಿಧದ ಚಟ್ನಿ ಪುಡಿ ಮತ್ತು ಶುದ್ಧ ತುಪ್ಪದ ರುಚಿ.",
+    kannadaDescription: "ಬಿಸಿ ಇಡ್ಲಿ ಅಥವಾ ದೋಸೆ, ಎರಡು ವಿಧದ ಚಟ್ನಿ ಪುಡಿ ಮತ್ತು ಶುದ್ಧ ತುಪ್ಪದ ರುಚಿ.",
     price: 360,
     colors: ["#C99436", "#506D41", "#302A25"],
     includedProductIds: ["shenga-pudi", "gurellu-pudi", "nippattu-crunch"],
