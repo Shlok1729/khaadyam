@@ -83,7 +83,7 @@ export function Header() {
               href="#gift"
               className="hover:text-[#5F252D] transition-smooth relative py-1 hover:border-b-2 hover:border-[#5F252D]"
             >
-              {lang === "kn" ? "ಬಡಿಸಿ ಕಳಿಸಿ" : "Gift a Table"}
+              {lang === "kn" ? "ಬಡಿಸಿ ಕಳಿಸಿ" : "Gift a Basket"}
             </a>
             <a
               href="#story"
@@ -175,7 +175,7 @@ export function Header() {
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-between text-base font-medium text-[#1D1A17] py-2 border-b border-[#E2D9CA]"
             >
-              <span>{lang === "kn" ? "ಬಡಿಸಿ ಕಳಿಸಿ" : "Gift a Table"}</span>
+              <span>{lang === "kn" ? "ಬಡಿಸಿ ಕಳಿಸಿ" : "Gift a Basket"}</span>
               <ArrowRight className="w-4 h-4 text-[#6B6157]" />
             </a>
             <a

@@ -38,8 +38,8 @@ export function SubscriptionSection() {
           </h2>
           <p className="text-base md:text-xl text-[#EADCD8] font-light leading-relaxed">
             {lang === "kn"
-              ? "ಏನು ಬರಬೇಕು ಮತ್ತು ಎಷ್ಟು ತಿಂಗಳು ಎಂದು ಆರಿಸಿ. ಮರುಆರ್ಡರ್ ಮಾಡುವ ಚಿಂತೆಯೇ ಇಲ್ಲದೆ ಪ್ರತಿ ತಿಂಗಳು ತಾಜಾ ಪೆಟ್ಟಿಗೆ ನಿಮ್ಮ ಮನೆಗೆ ತಲುಪುತ್ತದೆ."
-              : "Choose what comes, choose how long, and never think about re-ordering. A freshly packed box arrives along The Step every month."}
+              ? "ಏನು ಬರಬೇಕು ಮತ್ತು ಎಷ್ಟು ಕಾಲ ಎಂದು ಆರಿಸಿ. ಮರುಆರ್ಡರ್ ಮಾಡುವ ಚಿಂತೆಯೇ ಇಲ್ಲದೆ ತಾಜಾ ಪೆಟ್ಟಿಗೆ ನಿಮ್ಮ ಮನೆಗೆ ತಲುಪುತ್ತದೆ."
+              : "Choose what comes, choose how long, and never think about re-ordering. A freshly packed box arrives along The Step."}
           </p>
         </div>
 
@@ -104,9 +104,6 @@ export function SubscriptionSection() {
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between text-xs text-[#EADCD8] font-medium">
               <span>{lang === "kn" ? "ಹೆಜ್ಜೆ ಗುರುತು (The Step)" : "The Step · Dispatch Journey"}</span>
-              <span className="font-semibold text-[#C99436]">
-                {lang === "kn" ? `${subscriptionTenure} ತಿಂಗಳ ಯೋಜನೆ` : `${subscriptionTenure} Month Commitment`}
-              </span>
             </div>
 
             <div className="relative w-full h-3 bg-[#311116] rounded-full overflow-hidden border border-[#76303B]">
@@ -120,8 +117,9 @@ export function SubscriptionSection() {
               <span className="text-[#C99436] font-semibold">
                 {lang === "kn" ? "ತಿಂಗಳು ೧ (ಮೊದಲ ಪೆಟ್ಟಿಗೆ)" : "Month 1 (First Box)"}
               </span>
-              {subscriptionTenure >= 6 && <span>{lang === "kn" ? "ತಿಂಗಳು ೬" : "Month 6"}</span>}
-              {subscriptionTenure >= 9 && <span>{lang === "kn" ? "ತಿಂಗಳು ೯" : "Month 9"}</span>}
+              {subscriptionTenure > 6 && (
+                <span>{lang === "kn" ? "ತಿಂಗಳು ೬" : "Month 6"}</span>
+              )}
               <span>{lang === "kn" ? `ತಿಂಗಳು ${subscriptionTenure}` : `Month ${subscriptionTenure}`}</span>
             </div>
           </div>
@@ -144,7 +142,7 @@ export function SubscriptionSection() {
                       : "bg-[#311116] text-[#EADCD8] border-[#76303B] hover:border-[#C99436]"
                   }`}
                 >
-                  {lang === "kn" ? `ಪ್ರತಿ ತಿಂಗಳ ${day}ನೇ ತಾರೀಕು` : `The ${day}th of every month`}
+                  {lang === "kn" ? `${day}ನೇ ತಾರೀಕು` : `${day}th`}
                 </button>
               ))}
             </div>
@@ -354,7 +352,7 @@ export function SubscriptionSection() {
                   <div className="flex justify-between">
                     <span>{lang === "kn" ? "ವಿತರಣಾ ಶುಲ್ಕ:" : "Delivery cost:"}</span>
                     <span className="font-semibold text-[#506D41]">
-                      {lang === "kn" ? "ಸದಾ ಉಚಿತ" : "Free every month"}
+                      {lang === "kn" ? "ಸದಾ ಉಚಿತ" : "Free"}
                     </span>
                   </div>
                   <div className="flex justify-between">

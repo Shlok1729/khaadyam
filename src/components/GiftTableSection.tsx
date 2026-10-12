@@ -32,11 +32,11 @@ export function GiftTableSection() {
         <div className="flex-1 flex flex-col gap-6">
           <div className="flex items-center gap-2 text-xs font-semibold text-[#5F252D] uppercase tracking-wider">
             <Heart className="w-4 h-4 fill-current text-[#5F252D]" />
-            <span>{lang === "kn" ? "ಬಡಿಸಿ ಕಳಿಸಿ · ದೂರದಲ್ಲಿರುವ ಆಪ್ತರಿಗೆ" : "Gift a Table · For someone far from home"}</span>
+            <span>{lang === "kn" ? "ಬಡಿಸಿ ಕಳಿಸಿ · ದೂರದಲ್ಲಿರುವ ಆಪ್ತರಿಗೆ" : "Gift a Basket · For someone far from home"}</span>
           </div>
 
           <h2 className="font-serif-brand text-3xl md:text-5xl font-normal text-[#1D1A17] leading-tight">
-            {lang === "kn" ? "ಬಡಿಸಿ ಕಳಿಸಿ." : "Gift a table."}
+            {lang === "kn" ? "ಬಡಿಸಿ ಕಳಿಸಿ." : "Gift a basket."}
           </h2>
 
           <p className="text-base md:text-lg text-[#5A5048] leading-relaxed max-w-xl">
@@ -121,8 +121,8 @@ export function GiftTableSection() {
               <Send className="w-4 h-4 text-[#C99436]" />
               <span>
                 {lang === "kn"
-                  ? `ಈ ತಟ್ಟೆಯನ್ನು ಪ್ಯಾಕ್ ಮಾಡಿ ಕಳಿಸಿ (₹${selectedMeal.price})`
-                  : `Pack & Gift This Table (₹${selectedMeal.price})`}
+                  ? `ಈ ಬುಟ್ಟಿಯನ್ನು ಪ್ಯಾಕ್ ಮಾಡಿ ಕಳಿಸಿ (₹${selectedMeal.price})`
+                  : `Pack & Gift This Basket (₹${selectedMeal.price})`}
               </span>
             </button>
             {sentSuccess && (

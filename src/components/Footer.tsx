@@ -129,7 +129,7 @@ export function Footer() {
               </li>
               <li>
                 <a href="#gift" className="hover:text-white transition-smooth">
-                  {lang === "kn" ? "ಬಡಿಸಿ ಕಳಿಸಿ" : "Gift a table"}
+                  {lang === "kn" ? "ಬಡಿಸಿ ಕಳಿಸಿ" : "Gift a Basket"}
                 </a>
               </li>
             </ul>
