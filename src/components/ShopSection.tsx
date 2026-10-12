@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useKhaadyam } from "@/context/KhaadyamContext";
 import { FOOD_FAMILIES, PRODUCTS, MEAL_PLATES, Product, MealPlate, ProductVariant } from "@/data/catalog";
-import { Plus, Check, Calendar, ArrowRight, Info } from "lucide-react";
+import { Plus, Check, Calendar, ArrowRight, Info, ChevronDown } from "lucide-react";
 
 export function ShopSection() {
   const {
@@ -15,6 +15,20 @@ export function ShopSection() {
     setActiveProductModal,
     lang,
   } = useKhaadyam();
+
+  // Dropdown state for Two-Door Switcher
+  const [doorDropdownOpen, setDoorDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setDoorDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   // Selected Category Filter for Door B
   const [selectedFamilyId, setSelectedFamilyId] = useState<string>("all");
@@ -68,29 +82,86 @@ export function ShopSection() {
             </p>
           </div>
 
-          {/* The Switcher */}
-          <div className="inline-flex p-1.5 bg-[#E9DFCE] rounded-full border border-[#D9CFBF] self-start md:self-end">
+          {/* The Door Selector Dropdown */}
+          <div ref={dropdownRef} className="relative self-start md:self-end">
             <button
-              onClick={() => setShopDoor("meal")}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-smooth cursor-pointer flex items-center gap-2 ${
-                shopDoor === "meal"
-                  ? "bg-[#5F252D] text-[#F4EFE6] shadow-sm"
-                  : "text-[#5A5048] hover:text-[#1D1A17]"
-              }`}
+              id="shop-door-dropdown-btn"
+              type="button"
+              onClick={() => setDoorDropdownOpen(!doorDropdownOpen)}
+              className="flex items-center gap-3 bg-[#E9DFCE] hover:bg-[#E2D6C2] text-[#1D1A17] px-5 py-2.5 rounded-full border border-[#D9CFBF] text-sm font-medium transition-smooth shadow-xs cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#5F252D]/30 min-w-[170px] justify-between"
+              aria-haspopup="listbox"
+              aria-expanded={doorDropdownOpen}
             >
-              <span>{lang === "kn" ? "ತಟ್ಟೆಯಂತೆ" : "By meal"}</span>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#5F252D]" />
+                <span className="font-serif-brand text-base tracking-tight text-[#1D1A17]">
+                  {shopDoor === "meal"
+                    ? (lang === "kn" ? "ತಟ್ಟೆಯಂತೆ" : "By meal")
+                    : (lang === "kn" ? "ವಿಭಾಗದಂತೆ" : "By category")}
+                </span>
+              </div>
+              <ChevronDown
+                className={`w-4 h-4 text-[#5F252D] transition-transform duration-200 ${
+                  doorDropdownOpen ? "rotate-180" : ""
+                }`}
+              />
             </button>
 
-            <button
-              onClick={() => setShopDoor("category")}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-smooth cursor-pointer flex items-center gap-2 ${
-                shopDoor === "category"
-                  ? "bg-[#5F252D] text-[#F4EFE6] shadow-sm"
-                  : "text-[#5A5048] hover:text-[#1D1A17]"
-              }`}
-            >
-              <span>{lang === "kn" ? "ವಿಭಾಗದಂತೆ" : "By category"}</span>
-            </button>
+            {doorDropdownOpen && (
+              <div className="absolute right-0 mt-2 w-64 bg-[#FAF9F5] border border-[#D9CFBF] rounded-2xl shadow-xl py-2 z-30 animate-in fade-in slide-in-from-top-2 duration-150">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShopDoor("meal");
+                    setDoorDropdownOpen(false);
+                  }}
+                  className={`w-full text-left px-4 py-3 flex items-center justify-between text-sm transition-smooth hover:bg-[#E9DFCE]/60 cursor-pointer ${
+                    shopDoor === "meal"
+                      ? "text-[#5F252D] font-semibold bg-[#E9DFCE]/50"
+                      : "text-[#1D1A17]"
+                  }`}
+                >
+                  <div className="flex flex-col">
+                    <span className="font-serif-brand text-base">
+                      {lang === "kn" ? "ತಟ್ಟೆಯಂತೆ" : "By meal"}
+                    </span>
+                    <span className="text-xs text-[#7C6F64] font-normal">
+                      {lang === "kn" ? "೬ ವಿಶಿಷ್ಟ ಊಟದ ತಟ್ಟೆಗಳು" : "Curated meal moments (6 plates)"}
+                    </span>
+                  </div>
+                  {shopDoor === "meal" && (
+                    <Check className="w-4 h-4 text-[#5F252D] shrink-0" />
+                  )}
+                </button>
+
+                <div className="border-t border-[#E9DFCE] my-1" />
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShopDoor("category");
+                    setDoorDropdownOpen(false);
+                  }}
+                  className={`w-full text-left px-4 py-3 flex items-center justify-between text-sm transition-smooth hover:bg-[#E9DFCE]/60 cursor-pointer ${
+                    shopDoor === "category"
+                      ? "text-[#5F252D] font-semibold bg-[#E9DFCE]/50"
+                      : "text-[#1D1A17]"
+                  }`}
+                >
+                  <div className="flex flex-col">
+                    <span className="font-serif-brand text-base">
+                      {lang === "kn" ? "ವಿಭಾಗದಂತೆ" : "By category"}
+                    </span>
+                    <span className="text-xs text-[#7C6F64] font-normal">
+                      {lang === "kn" ? "೮ ಸಾಂಪ್ರದಾಯಿಕ ಆಹಾರ ಕುಟುಂಬಗಳು" : "The 8 food families"}
+                    </span>
+                  </div>
+                  {shopDoor === "category" && (
+                    <Check className="w-4 h-4 text-[#5F252D] shrink-0" />
+                  )}
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
