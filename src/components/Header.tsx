@@ -134,7 +134,7 @@ export function Header() {
               <ShoppingBag className="w-4 h-4 text-[#EADCD8] group-hover:scale-110 transition-smooth" />
               <span>{lang === "kn" ? "ತಟ್ಟೆ" : "Plate"}</span>
               {plateItemCount > 0 && (
-                <span className="ml-0.5 bg-[#C99436] text-[#1D1A17] font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center animate-pulse">
+                <span className="ml-0.5 bg-[#F4EFE6] text-[#5F252D] font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center animate-pulse">
                   {plateItemCount}
                 </span>
               )}

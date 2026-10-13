@@ -65,7 +65,7 @@ export function SubscriptionSection() {
                 onClick={() => setSubscriptionTenure(6)}
                 className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-smooth cursor-pointer ${
                   subscriptionTenure === 6
-                    ? "bg-[#C99436] text-[#1D1A17] shadow-md"
+                    ? "bg-[#F4EFE6] text-[#5F252D] shadow-md"
                     : "text-[#EADCD8] hover:text-white"
                 }`}
               >
@@ -75,12 +75,18 @@ export function SubscriptionSection() {
                 onClick={() => setSubscriptionTenure(9)}
                 className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-smooth cursor-pointer flex items-center gap-1.5 ${
                   subscriptionTenure === 9
-                    ? "bg-[#C99436] text-[#1D1A17] shadow-md"
+                    ? "bg-[#F4EFE6] text-[#5F252D] shadow-md"
                     : "text-[#EADCD8] hover:text-white"
                 }`}
               >
                 <span>{lang === "kn" ? "೯ ತಿಂಗಳು" : "9 months"}</span>
-                <span className="text-[10px] bg-[#5F252D] text-[#EADCD8] px-1.5 py-0.5 rounded-full">
+                <span
+                  className={`text-[10px] px-1.5 py-0.5 rounded-full ${
+                    subscriptionTenure === 9
+                      ? "bg-[#5F252D] text-[#F4EFE6]"
+                      : "bg-[#461920] text-[#EADCD8]"
+                  }`}
+                >
                   {lang === "kn" ? "೫% ರಿಯಾಯಿತಿ" : "Save 5%"}
                 </span>
               </button>
@@ -88,12 +94,18 @@ export function SubscriptionSection() {
                 onClick={() => setSubscriptionTenure(12)}
                 className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-smooth cursor-pointer flex items-center gap-1.5 ${
                   subscriptionTenure === 12
-                    ? "bg-[#C99436] text-[#1D1A17] shadow-md"
+                    ? "bg-[#F4EFE6] text-[#5F252D] shadow-md"
                     : "text-[#EADCD8] hover:text-white"
                 }`}
               >
                 <span>{lang === "kn" ? "೧೨ ತಿಂಗಳು" : "12 months"}</span>
-                <span className="text-[10px] bg-[#5F252D] text-[#EADCD8] px-1.5 py-0.5 rounded-full font-bold">
+                <span
+                  className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
+                    subscriptionTenure === 12
+                      ? "bg-[#5F252D] text-[#F4EFE6]"
+                      : "bg-[#461920] text-[#EADCD8]"
+                  }`}
+                >
                   {lang === "kn" ? "೧೦% ರಿಯಾಯಿತಿ" : "Save 10%"}
                 </span>
               </button>
@@ -108,13 +120,13 @@ export function SubscriptionSection() {
 
             <div className="relative w-full h-3 bg-[#311116] rounded-full overflow-hidden border border-[#76303B]">
               <div
-                className="h-full bg-gradient-to-r from-[#C99436] to-[#E5AC44] rounded-full transition-all duration-500 shadow-sm"
+                className="h-full bg-[#F4EFE6] rounded-full transition-all duration-500 shadow-sm"
                 style={{ width: `${(1 / subscriptionTenure) * 100}%` }}
               />
             </div>
 
             <div className="flex justify-between text-[11px] text-[#EADCD8]/70 pt-1">
-              <span className="text-[#C99436] font-semibold">
+              <span className="text-[#F4EFE6] font-semibold">
                 {lang === "kn" ? "ತಿಂಗಳು ೧ (ಮೊದಲ ಪೆಟ್ಟಿಗೆ)" : "Month 1 (First Box)"}
               </span>
               {subscriptionTenure > 6 && (
@@ -127,7 +139,7 @@ export function SubscriptionSection() {
           {/* Delivery Cycle Date Selector */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
             <div className="flex items-center gap-2 text-xs text-[#EADCD8]">
-              <Calendar className="w-4 h-4 text-[#C99436]" />
+              <Calendar className="w-4 h-4 text-[#EADCD8]" />
               <span>{lang === "kn" ? "ಮನೆಗೆ ತಲುಪುವ ದಿನಾಂಕ:" : "Arrives at your home on:"}</span>
             </div>
 
@@ -138,8 +150,8 @@ export function SubscriptionSection() {
                   onClick={() => setDispatchDay(day as 5 | 15 | 25)}
                   className={`px-4 py-1.5 rounded-full text-xs font-medium transition-smooth border cursor-pointer ${
                     dispatchDay === day
-                      ? "bg-[#C99436] text-[#1D1A17] border-[#C99436] font-bold"
-                      : "bg-[#311116] text-[#EADCD8] border-[#76303B] hover:border-[#C99436]"
+                      ? "bg-[#F4EFE6] text-[#5F252D] border-[#F4EFE6] font-bold shadow-xs"
+                      : "bg-[#311116] text-[#EADCD8] border-[#76303B] hover:border-[#F4EFE6]"
                   }`}
                 >
                   {lang === "kn" ? `${day}ನೇ ತಾರೀಕು` : `${day}th`}
@@ -160,7 +172,7 @@ export function SubscriptionSection() {
             }`}
           >
             <span>{lang === "kn" ? "೩ · ನಿಮ್ಮದೇ ಪಟ್ಟಿ ತಯಾರಿಸಿ" : "3 · Build your own list"}</span>
-            <span className="text-xs bg-[#C99436] text-[#1D1A17] px-2 py-0.5 rounded-full font-bold">
+            <span className="text-xs bg-[#5F252D] text-[#F4EFE6] px-2 py-0.5 rounded-full font-bold">
               {lang === "kn" ? "ಹೆಚ್ಚು ಜನಪ್ರಿಯ" : "Most Popular"}
             </span>
           </button>
@@ -205,7 +217,7 @@ export function SubscriptionSection() {
                   </p>
                 </div>
 
-                <span className="text-xs text-[#C99436] bg-[#311116] px-3 py-1 rounded-full border border-[#76303B]">
+                <span className="text-xs text-[#EADCD8] bg-[#311116] px-3 py-1 rounded-full border border-[#76303B]">
                   {customList.length} {lang === "kn" ? "ಪದಾರ್ಥಗಳು" : "items configured"}
                 </span>
               </div>
@@ -310,7 +322,7 @@ export function SubscriptionSection() {
                       onClick={() => addToCustomList(prod, prod.variants[1] || prod.variants[0])}
                       className="bg-[#461920] hover:bg-[#311116] border border-[#76303B] px-3.5 py-1.5 rounded-full text-xs text-[#EADCD8] flex items-center gap-1.5 cursor-pointer transition-smooth"
                     >
-                      <Plus className="w-3 h-3 text-[#C99436]" />
+                      <Plus className="w-3 h-3 text-[#EADCD8]" />
                       <span>{lang === "kn" ? prod.kannadaTitle : prod.title} (250g)</span>
                     </button>
                   ))}
@@ -320,7 +332,7 @@ export function SubscriptionSection() {
 
             {/* Right: Fixed Monthly Amount Card */}
             <div className="lg:col-span-4 flex flex-col gap-6">
-              <div className="bg-[#F4EFE6] text-[#1D1A17] rounded-3xl p-6 md:p-8 flex flex-col justify-between gap-6 shadow-2xl border-4 border-[#C99436]/40 sticky top-28">
+              <div className="bg-[#F4EFE6] text-[#1D1A17] rounded-3xl p-6 md:p-8 flex flex-col justify-between gap-6 shadow-2xl border border-[#D9CFBF] sticky top-28">
                 <div>
                   <div className="flex items-center justify-between text-xs font-semibold text-[#5F252D] uppercase tracking-wider mb-2">
                     <span>{lang === "kn" ? "ನಿಮ್ಮ ತಿಂಗಳ ಮೊತ್ತ" : "Your Monthly Amount"}</span>
@@ -376,7 +388,7 @@ export function SubscriptionSection() {
                     className="w-full bg-[#5F252D] hover:bg-[#461920] text-[#F4EFE6] py-4 rounded-full text-sm font-semibold transition-smooth shadow-md cursor-pointer flex items-center justify-center gap-2 group"
                   >
                     <span>{lang === "kn" ? "ತಿಂಗಳ ಪೆಟ್ಟಿಗೆ ಪ್ರಾರಂಭಿಸಿ" : "Set up monthly box"}</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-smooth text-[#C99436]" />
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-smooth text-[#F4EFE6]" />
                   </button>
                 )}
               </div>

@@ -9,7 +9,7 @@ export function QuickCommerceStrip() {
       <div className="max-w-7xl mx-auto bg-[#FBF8F2] border border-[#E2D9CA] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xs">
         <div className="flex flex-col gap-1 text-center md:text-left">
           <div className="flex items-center justify-center md:justify-start gap-2 text-xs font-semibold uppercase tracking-wider text-[#5F252D]">
-            <Zap className="w-4 h-4 text-[#C99436] fill-current" />
+            <Zap className="w-4 h-4 text-[#5F252D] fill-current" />
             <span>Instant Refill Door</span>
           </div>
           <h3 className="font-serif-brand text-2xl text-[#1D1A17] font-normal">

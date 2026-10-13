@@ -116,7 +116,7 @@ export function HeroSection() {
           {/* Card 2 */}
           <div className="bg-[#FBF8F2] border border-[#E2D9CA] rounded-2xl p-6 flex flex-col justify-between gap-6 hover:shadow-md transition-smooth">
             <div className="h-44 rounded-xl bg-gradient-to-br from-[#E9DFCE] to-[#D9CFBF] border border-[#D9CFBF]/60 flex flex-col items-center justify-center p-4 text-center relative overflow-hidden">
-              <div className="w-12 h-12 rounded-full bg-[#C99436]/20 flex items-center justify-center mb-2">
+              <div className="w-12 h-12 rounded-full bg-[#5F252D]/10 flex items-center justify-center mb-2">
                 <span className="text-lg">☀️</span>
               </div>
               <span className="font-serif-brand text-xl text-[#764D30]">
@@ -127,7 +127,7 @@ export function HeroSection() {
               </span>
             </div>
             <div>
-              <div className="text-xs font-semibold text-[#C99436] uppercase tracking-wider mb-1">
+              <div className="text-xs font-semibold text-[#5F252D] uppercase tracking-wider mb-1">
                 {lang === "kn" ? "ಕೈಕುಟ್ಟಿದ ಮಸಾಲೆ" : "Stone-Ground"}
               </div>
               <h3 className="font-serif-brand text-xl text-[#1D1A17] font-normal">

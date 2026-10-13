@@ -115,7 +115,7 @@ export function UpiModal() {
               onClick={handleSimulatePayment}
               className="w-full bg-[#5F252D] hover:bg-[#461920] text-[#F4EFE6] py-3.5 rounded-full text-sm font-semibold transition-smooth shadow-md cursor-pointer flex items-center justify-center gap-2"
             >
-              <ShieldCheck className="w-4 h-4 text-[#C99436]" />
+              <ShieldCheck className="w-4 h-4 text-[#F4EFE6]" />
               <span>I have completed UPI transfer (₹{plateTotal})</span>
             </button>
           </>
@@ -123,7 +123,7 @@ export function UpiModal() {
 
         {paymentStep === "verifying" && (
           <div className="py-12 flex flex-col items-center justify-center text-center gap-4">
-            <div className="w-14 h-14 border-4 border-[#C99436] border-t-transparent rounded-full animate-spin" />
+            <div className="w-14 h-14 border-4 border-[#5F252D] border-t-transparent rounded-full animate-spin" />
             <div className="flex flex-col gap-1">
               <h4 className="font-serif-brand text-2xl text-[#1D1A17]">
                 Verifying UPI Payment...

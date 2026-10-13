@@ -281,7 +281,7 @@ export function PlateDrawer() {
                     ? `ಯುಪಿಐ ಮೂಲಕ ಪಾವತಿಸಿ (₹${plateTotal})`
                     : `Pay with UPI (₹${plateTotal})`}
                 </span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-smooth text-[#C99436]" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-smooth text-[#F4EFE6]" />
               </button>
               <p className="text-[11px] text-center text-[#6B6157]">
                 {lang === "kn" ? "ನಿಮ್ಮ ಯುಪಿಐ ಆ್ಯಪ್ ತೆರೆಯುತ್ತದೆ. ಖಾತೆ ಅಗತ್ಯವಿಲ್ಲ." : "Opens your UPI app. No account needed."}

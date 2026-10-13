@@ -41,7 +41,7 @@ export function StorySection() {
         {/* The 4 Principles Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="bg-[#FBF8F2] border border-[#E2D9CA] rounded-2xl p-6 flex flex-col justify-between gap-4">
-            <div className="w-12 h-12 rounded-full bg-[#C99436]/15 flex items-center justify-center text-[#C99436]">
+            <div className="w-12 h-12 rounded-full bg-[#5F252D]/10 flex items-center justify-center text-[#5F252D]">
               <Sun className="w-6 h-6" />
             </div>
             <div>

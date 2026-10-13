@@ -50,7 +50,7 @@ export function MemoryWallSection() {
             onClick={() => setIsModalOpen(true)}
             className="bg-[#5F252D] hover:bg-[#461920] text-[#F4EFE6] px-6 py-3 rounded-full text-xs sm:text-sm font-semibold transition-smooth shadow-sm cursor-pointer flex items-center gap-2 self-start md:self-end"
           >
-            <Plus className="w-4 h-4 text-[#C99436]" />
+            <Plus className="w-4 h-4 text-[#F4EFE6]" />
             <span>
               {lang === "kn"
                 ? "ಗೋಡೆಗೆ ನಿಮ್ಮ ನೆನಪನ್ನು ಸೇರಿಸಿ"

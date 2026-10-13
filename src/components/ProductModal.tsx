@@ -85,7 +85,7 @@ export function ProductModal() {
         {/* Amma's Note Box */}
         <div className="bg-[#FBF8F2] border border-[#E2D9CA] rounded-2xl p-5 flex flex-col gap-2.5">
           <div className="flex items-center gap-2 text-[#5F252D] font-semibold text-sm">
-            <Sparkles className="w-4 h-4 text-[#C99436]" />
+            <Sparkles className="w-4 h-4 text-[#5F252D]" />
             <span>{lang === "kn" ? "ಅಮ್ಮನ ಮಾತು" : "Amma's note"}</span>
           </div>
           <p className="text-sm md:text-base text-[#1D1A17] leading-relaxed">

@@ -63,7 +63,7 @@ export function ShopSection() {
       {/* Toast feedback */}
       {toastMsg && (
         <div className="fixed bottom-6 right-6 z-50 bg-[#5F252D] text-[#F4EFE6] px-5 py-3 rounded-full shadow-lg flex items-center gap-2 text-sm font-medium animate-in fade-in slide-in-from-bottom duration-200">
-          <Check className="w-4 h-4 text-[#C99436]" />
+          <Check className="w-4 h-4 text-[#F4EFE6]" />
           <span>{toastMsg}</span>
         </div>
       )}

@@ -118,7 +118,7 @@ export function GiftTableSection() {
               onClick={handleSendGift}
               className="bg-[#5F252D] hover:bg-[#461920] text-[#F4EFE6] px-8 py-3.5 rounded-full text-sm font-semibold transition-smooth shadow-md flex items-center justify-center gap-2 cursor-pointer w-full sm:w-auto"
             >
-              <Send className="w-4 h-4 text-[#C99436]" />
+              <Send className="w-4 h-4 text-[#F4EFE6]" />
               <span>
                 {lang === "kn"
                   ? `ಈ ಬುಟ್ಟಿಯನ್ನು ಪ್ಯಾಕ್ ಮಾಡಿ ಕಳಿಸಿ (₹${selectedMeal.price})`

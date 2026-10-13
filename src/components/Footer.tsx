@@ -23,7 +23,7 @@ export function Footer() {
                 className="h-10 w-auto object-contain brightness-0 invert opacity-90 transition-transform group-hover:scale-105"
               />
               <span className="font-serif-brand text-3xl md:text-4xl tracking-tight text-[#F4EFE6]">
-                {lang === "kn" ? "ಖಾದ್ಯಂ" : "khaadyam"}<span className="text-[#C99436]">.</span>
+                {lang === "kn" ? "ಖಾದ್ಯಂ" : "khaadyam"}<span className="text-[#F4EFE6]">.</span>
               </span>
             </a>
             <p className="text-sm md:text-base text-[#D9C3C0] max-w-sm leading-relaxed">
@@ -149,7 +149,7 @@ export function Footer() {
               href="https://wa.me/919876543210"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-[#C99436] hover:underline"
+              className="flex items-center gap-1.5 text-[#F4EFE6] hover:underline"
             >
               <MessageCircle className="w-3.5 h-3.5 fill-current" />
               <span>{lang === "kn" ? "ವಾಟ್ಸಾಪ್ ಅಡುಗೆಮನೆ ಸಂಪರ್ಕ" : "WhatsApp Kitchen Door"}</span>
