@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useKhaadyam } from "@/context/KhaadyamContext";
 import { MessageCircle } from "lucide-react";
 
@@ -14,7 +15,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand Column */}
           <div className="lg:col-span-2 flex flex-col gap-4">
-            <a href="#" className="flex items-center gap-3 w-fit group">
+            <Link href="/" className="flex items-center gap-3 w-fit group">
               <Image
                 src="/logo.png"
                 alt="Khaadyam Logo"
@@ -25,7 +26,7 @@ export function Footer() {
               <span className="font-serif-brand text-3xl md:text-4xl tracking-tight text-[#F4EFE6]">
                 {lang === "kn" ? "ಖಾದ್ಯಂ" : "khaadyam"}<span className="text-[#F4EFE6]">.</span>
               </span>
-            </a>
+            </Link>
             <p className="text-sm md:text-base text-[#D9C3C0] max-w-sm leading-relaxed">
               {lang === "kn"
                 ? "ನಿಮ್ಮ ಮನೆಯು ಉಳಿಸಿಕೊಂಡ ಅಸಲಿ ರುಚಿ. ದಾವಣಗೆರೆಯ ಪಾರಂಪರಿಕ ಅಡುಗೆಮನೆಯಿಂದ."
@@ -50,29 +51,29 @@ export function Footer() {
             </span>
             <ul className="space-y-2 text-xs md:text-sm text-[#F4EFE6]/80">
               <li>
-                <a href="#shop" className="hover:text-white transition-smooth">
+                <Link href="/#shop" className="hover:text-white transition-smooth">
                   {lang === "kn" ? "ತಟ್ಟೆಯಂತೆ (ಊಟದ ತಟ್ಟೆಗಳು)" : "By Meal (Curated moments)"}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#shop" className="hover:text-white transition-smooth">
+                <Link href="/#shop" className="hover:text-white transition-smooth">
                   {lang === "kn" ? "ವಿಭಾಗದಂತೆ (೮ ವಿಭಾಗಗಳು)" : "By Category (The 8 families)"}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#shop" className="hover:text-white transition-smooth">
+                <Link href="/#shop" className="hover:text-white transition-smooth">
                   {lang === "kn" ? "ಚಟ್ನಿ ಪುಡಿಗಳು" : "Chutney Pudis"}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#shop" className="hover:text-white transition-smooth">
+                <Link href="/#shop" className="hover:text-white transition-smooth">
                   {lang === "kn" ? "ಭರಣಿ ಉಪ್ಪಿನಕಾಯಿ" : "Earthen Bharani Pickles"}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#shop" className="hover:text-white transition-smooth">
+                <Link href="/#shop" className="hover:text-white transition-smooth">
                   {lang === "kn" ? "ಸಂಡಿಗೆ ಮತ್ತು ಹಪ್ಪಳ" : "Sun-dried Sandige"}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -84,24 +85,24 @@ export function Footer() {
             </span>
             <ul className="space-y-2 text-xs md:text-sm text-[#F4EFE6]/80">
               <li>
-                <a href="#subscribe" className="hover:text-white transition-smooth">
+                <Link href="/#subscribe" className="hover:text-white transition-smooth">
                   {lang === "kn" ? "ಸಿದ್ಧಪಡಿಸಿದ ತಿಂಗಳ ಪೆಟ್ಟಿಗೆ" : "Ready-made monthly boxes"}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#subscribe" className="hover:text-white transition-smooth">
+                <Link href="/#subscribe" className="hover:text-white transition-smooth">
                   {lang === "kn" ? "ನಿಮ್ಮದೇ ಪಟ್ಟಿ ತಯಾರಿಸಿ" : "Build your own custom list"}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#subscribe" className="hover:text-white transition-smooth">
+                <Link href="/#subscribe" className="hover:text-white transition-smooth">
                   {lang === "kn" ? "ಹೆಜ್ಜೆ ಗುರುತು (The Step)" : "The Step (Tenure tracker)"}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#subscribe" className="hover:text-white transition-smooth">
+                <Link href="/#subscribe" className="hover:text-white transition-smooth">
                   {lang === "kn" ? "ಯುಪಿಐ ಆಟೋಪೇ ಮ್ಯಾಂಡೇಟ್" : "UPI AutoPay e-Mandate"}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -113,24 +114,24 @@ export function Footer() {
             </span>
             <ul className="space-y-2 text-xs md:text-sm text-[#F4EFE6]/80">
               <li>
-                <a href="#story" className="hover:text-white transition-smooth">
+                <Link href="/#story" className="hover:text-white transition-smooth">
                   {lang === "kn" ? "ನಮ್ಮ ಪರಂಪರೆ" : "Our heritage recipes"}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#story" className="hover:text-white transition-smooth">
+                <Link href="/#story" className="hover:text-white transition-smooth">
                   {lang === "kn" ? "ಮಣ್ಣಿನಿಂದ ತಟ್ಟೆಯವರೆಗೆ" : "Soil to plate circle"}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#memory-wall" className="hover:text-white transition-smooth">
+                <Link href="/#memory-wall" className="hover:text-white transition-smooth">
                   {lang === "kn" ? "ನೆನಪಿನ ಗೋಡೆ" : "The Memory Wall"}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#gift" className="hover:text-white transition-smooth">
+                <Link href="/gift-a-basket" className="hover:text-white transition-smooth">
                   {lang === "kn" ? "ಬಡಿಸಿ ಕಳಿಸಿ" : "Gift a Basket"}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

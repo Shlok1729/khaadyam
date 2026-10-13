@@ -2,10 +2,13 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useKhaadyam } from "@/context/KhaadyamContext";
 import { ShoppingBag, Menu, X, ArrowRight } from "lucide-react";
 
 export function Header() {
+  const pathname = usePathname();
   const {
     plateItemCount,
     setIsPlateOpen,
@@ -46,7 +49,7 @@ export function Header() {
       <header className="sticky top-0 z-40 w-full bg-[#F4EFE6]/95 backdrop-blur-md border-b border-[#D9CFBF]/70 transition-smooth">
         <div className="max-w-7xl mx-auto h-20 px-4 md:px-8 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-3 group">
             <Image
               src="/logo.png"
               alt="Khaadyam Logo"
@@ -63,40 +66,44 @@ export function Header() {
                 {lang === "kn" ? "ಅಮ್ಮನ ಕೈರುಚಿ" : "The taste your home kept"}
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className={`hidden lg:flex items-center gap-8 text-[15px] font-medium text-[#1D1A17] ${lang === "kn" ? "font-kannada text-base" : ""}`}>
-            <a
-              href="#shop"
+            <Link
+              href="/#shop"
               className="hover:text-[#5F252D] transition-smooth relative py-1 hover:border-b-2 hover:border-[#5F252D]"
             >
               {lang === "kn" ? "ಅಂಗಡಿ" : "Shop"}
-            </a>
-            <a
-              href="#subscribe"
+            </Link>
+            <Link
+              href="/#subscribe"
               className="hover:text-[#5F252D] transition-smooth relative py-1 hover:border-b-2 hover:border-[#5F252D]"
             >
               {lang === "kn" ? "ತಿಂಗಳ ಪೆಟ್ಟಿಗೆ" : "Subscribe"}
-            </a>
-            <a
-              href="#gift"
-              className="hover:text-[#5F252D] transition-smooth relative py-1 hover:border-b-2 hover:border-[#5F252D]"
+            </Link>
+            <Link
+              href="/gift-a-basket"
+              className={`hover:text-[#5F252D] transition-smooth relative py-1 ${
+                pathname?.includes("gift")
+                  ? "text-[#5F252D] font-bold border-b-2 border-[#5F252D]"
+                  : "hover:border-b-2 hover:border-[#5F252D]"
+              }`}
             >
               {lang === "kn" ? "ಬಡಿಸಿ ಕಳಿಸಿ" : "Gift a Basket"}
-            </a>
-            <a
-              href="#story"
+            </Link>
+            <Link
+              href="/#story"
               className="hover:text-[#5F252D] transition-smooth relative py-1 hover:border-b-2 hover:border-[#5F252D]"
             >
               {lang === "kn" ? "ನಮ್ಮ ಕತೆ" : "Our Story"}
-            </a>
-            <a
-              href="#memory-wall"
+            </Link>
+            <Link
+              href="/#memory-wall"
               className="hover:text-[#5F252D] transition-smooth relative py-1 hover:border-b-2 hover:border-[#5F252D]"
             >
               {lang === "kn" ? "ನೆನಪಿನ ಗೋಡೆ" : "Memory Wall"}
-            </a>
+            </Link>
           </nav>
 
           {/* Right Controls: Language & Plate Trigger */}
@@ -154,46 +161,48 @@ export function Header() {
         {/* Mobile Dropdown Nav */}
         {mobileMenuOpen && (
           <div className="lg:hidden bg-[#F4EFE6] border-b border-[#D9CFBF] px-6 py-6 flex flex-col gap-4 animate-in slide-in-from-top duration-200">
-            <a
-              href="#shop"
+            <Link
+              href="/#shop"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-between text-base font-medium text-[#1D1A17] py-2 border-b border-[#E2D9CA]"
             >
               <span>{lang === "kn" ? "ಅಂಗಡಿ" : "Shop"}</span>
               <ArrowRight className="w-4 h-4 text-[#6B6157]" />
-            </a>
-            <a
-              href="#subscribe"
+            </Link>
+            <Link
+              href="/#subscribe"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-between text-base font-medium text-[#1D1A17] py-2 border-b border-[#E2D9CA]"
             >
               <span>{lang === "kn" ? "ತಿಂಗಳ ಪೆಟ್ಟಿಗೆ" : "Subscribe"}</span>
               <ArrowRight className="w-4 h-4 text-[#6B6157]" />
-            </a>
-            <a
-              href="#gift"
+            </Link>
+            <Link
+              href="/gift-a-basket"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-between text-base font-medium text-[#1D1A17] py-2 border-b border-[#E2D9CA]"
             >
-              <span>{lang === "kn" ? "ಬಡಿಸಿ ಕಳಿಸಿ" : "Gift a Basket"}</span>
+              <span className={pathname?.includes("gift") ? "font-bold text-[#5F252D]" : ""}>
+                {lang === "kn" ? "ಬಡಿಸಿ ಕಳಿಸಿ" : "Gift a Basket"}
+              </span>
               <ArrowRight className="w-4 h-4 text-[#6B6157]" />
-            </a>
-            <a
-              href="#story"
+            </Link>
+            <Link
+              href="/#story"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-between text-base font-medium text-[#1D1A17] py-2 border-b border-[#E2D9CA]"
             >
               <span>{lang === "kn" ? "ನಮ್ಮ ಕತೆ" : "Our Story"}</span>
               <ArrowRight className="w-4 h-4 text-[#6B6157]" />
-            </a>
-            <a
-              href="#memory-wall"
+            </Link>
+            <Link
+              href="/#memory-wall"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-between text-base font-medium text-[#1D1A17] py-2"
             >
               <span>{lang === "kn" ? "ನೆನಪಿನ ಗೋಡೆ" : "Memory Wall"}</span>
               <ArrowRight className="w-4 h-4 text-[#6B6157]" />
-            </a>
+            </Link>
           </div>
         )}
       </header>

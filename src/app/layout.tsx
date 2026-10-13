@@ -23,6 +23,8 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+import { Providers } from "@/components/Providers";
+
 export const metadata: Metadata = {
   title: "Khaadyam (ಖಾದ್ಯಂ) · The Taste Your Home Kept",
   description:
@@ -39,7 +41,9 @@ export default function RootLayout({
       lang="en"
       className={`${tenorSans.variable} ${notoKannada.variable} ${jakarta.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#FAF9F5] text-[#1D1A17]">{children}</body>
+      <body className="min-h-full flex flex-col bg-[#FAF9F5] text-[#1D1A17]">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
