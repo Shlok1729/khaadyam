@@ -4,7 +4,6 @@ import React from "react";
 import { HeroSection } from "@/components/HeroSection";
 import { ShopSection } from "@/components/ShopSection";
 import { SubscriptionSection } from "@/components/SubscriptionSection";
-import { StorySection } from "@/components/StorySection";
 import { MemoryWallSection } from "@/components/MemoryWallSection";
 import { QuickCommerceStrip } from "@/components/QuickCommerceStrip";
 
@@ -20,13 +19,10 @@ export default function HomePage() {
       {/* 3. Subscriptions ("ಪ್ರತಿ ತಿಂಗಳೂ ಬಡಿಸ್ತೀನಿ") & Build Your Own List */}
       <SubscriptionSection />
 
-      {/* 4. Our Story & Davangere Kitchen */}
-      <StorySection />
-
-      {/* 5. The Memory Wall (ನೆನಪಿನ ಗೋಡೆ) */}
+      {/* 4. The Memory Wall (ನೆನಪಿನ ಗೋಡೆ) */}
       <MemoryWallSection />
 
-      {/* 6. Quick Commerce Refill Door */}
+      {/* 5. Quick Commerce Refill Door */}
       <QuickCommerceStrip />
     </>
   );

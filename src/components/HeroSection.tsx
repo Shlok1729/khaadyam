@@ -36,52 +36,69 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Hero Title and Editorial Copy */}
-        <div className="flex flex-col gap-6 max-w-4xl">
-          <h1 className="font-serif-brand text-4xl sm:text-5xl md:text-7xl font-normal leading-[1.08] text-[#1D1A17] tracking-tight">
-            {lang === "kn" ? (
-              <span className="font-kannada leading-tight">
-                ಪ್ರತಿಯೊಂದು ಮನೆಯಲ್ಲೂ ಒಬ್ಬ ಅಮ್ಮ ಇರುತ್ತಾಳೆ. <br />
-                <span className="italic font-normal text-[#5F252D]">
-                  ಖಾದ್ಯಂ ಆಕೆಯು ಉಳಿಸಿಕೊಂಡ ರುಚಿ.
+        {/* Hero Main Grid: Left Editorial + Right Visual */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Left Column: Title and Editorial Copy */}
+          <div className="lg:col-span-7 flex flex-col gap-6">
+            <h1 className="font-serif-brand text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.08] text-[#1D1A17] tracking-tight">
+              {lang === "kn" ? (
+                <span className="font-kannada leading-tight">
+                  ಪ್ರತಿಯೊಂದು ಮನೆಯಲ್ಲೂ ಒಬ್ಬ ಅಮ್ಮ ಇರುತ್ತಾಳೆ. <br />
+                  <span className="italic font-normal text-[#5F252D]">
+                    ಖಾದ್ಯಂ ಆಕೆಯು ಉಳಿಸಿಕೊಂಡ ರುಚಿ.
+                  </span>
                 </span>
-              </span>
-            ) : (
-              <>
-                Every home has an Amma. <br />
-                <span className="italic font-normal text-[#5F252D]">
-                  Khaadyam is the taste she kept.
+              ) : (
+                <>
+                  Every home has an Amma. <br />
+                  <span className="italic font-normal text-[#5F252D]">
+                    Khaadyam is the taste she kept.
+                  </span>
+                </>
+              )}
+            </h1>
+
+            <p className="text-base sm:text-lg md:text-xl text-[#5A5048] font-normal leading-relaxed max-w-xl">
+              {lang === "kn" ? (
+                <span className="font-kannada">
+                  ದಾವಣಗೆರೆಯ ಅಡುಗೆಮನೆಯಲ್ಲಿ ತಲೆಮಾರುಗಳಿಂದ ಉಳಿದುಬಂದ ಅಸಲಿ ರುಚಿ. ಕೈಯಲ್ಲೇ ಕುಟ್ಟಿದ ಚಟ್ನಿ ಪುಡಿಗಳು, ಮಣ್ಣಿನ ಭರಣಿಯಲ್ಲಿ ಮಾಗಿಸಿದ ಉಪ್ಪಿನಕಾಯಿ ಮತ್ತು ಹಬ್ಬದ ಊಟದ ಸವಿ ನಿಮ್ಮ ಮನೆಗೆ.
                 </span>
-              </>
-            )}
-          </h1>
+              ) : (
+                "Recipes passed from hand to hand in Davangere. Freshly ground powders, bharani-matured pickles, and whole curated plates sent fresh to your doorstep every month."
+              )}
+            </p>
 
-          <p className="text-lg md:text-2xl text-[#5A5048] font-normal leading-relaxed max-w-2xl">
-            {lang === "kn" ? (
-              <span className="font-kannada">
-                ದಾವಣಗೆರೆಯ ಅಡುಗೆಮನೆಯಲ್ಲಿ ತಲೆಮಾರುಗಳಿಂದ ಉಳಿದುಬಂದ ಅಸಲಿ ರುಚಿ. ಕೈಯಲ್ಲೇ ಕುಟ್ಟಿದ ಚಟ್ನಿ ಪುಡಿಗಳು, ಮಣ್ಣಿನ ಭರಣಿಯಲ್ಲಿ ಮಾಗಿಸಿದ ಉಪ್ಪಿನಕಾಯಿ ಮತ್ತು ಹಬ್ಬದ ಊಟದ ಸವಿ ನಿಮ್ಮ ಮನೆಗೆ.
-              </span>
-            ) : (
-              "Recipes passed from hand to hand in Davangere. Freshly ground powders, bharani-matured pickles, and whole curated plates sent fresh to your doorstep every month."
-            )}
-          </p>
+            {/* Action CTAs */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+              <button
+                onClick={handleServeMeal}
+                className="group bg-[#5F252D] hover:bg-[#461920] text-[#F4EFE6] px-8 py-4 rounded-full text-base font-medium transition-smooth shadow-md flex items-center justify-center gap-3 cursor-pointer"
+              >
+                <span>{lang === "kn" ? "ಇಡೀ ತಟ್ಟೆ ಬಡಿಸಿ" : "Serve me a whole meal"}</span>
+                <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-smooth" />
+              </button>
 
-          {/* Action CTAs */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-            <button
-              onClick={handleServeMeal}
-              className="group bg-[#5F252D] hover:bg-[#461920] text-[#F4EFE6] px-8 py-4 rounded-full text-base font-medium transition-smooth shadow-md flex items-center justify-center gap-3 cursor-pointer"
-            >
-              <span>{lang === "kn" ? "ಇಡೀ ತಟ್ಟೆ ಬಡಿಸಿ" : "Serve me a whole meal"}</span>
-              <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-smooth" />
-            </button>
+              <button
+                onClick={handleBrowseFamilies}
+                className="bg-transparent hover:bg-[#E9DFCE]/60 text-[#1D1A17] border border-[#5F252D] px-8 py-4 rounded-full text-base font-medium transition-smooth flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>{lang === "kn" ? "೮ ಆಹಾರ ವಿಭಾಗಗಳನ್ನು ನೋಡಿ" : "See the 8 food families"}</span>
+              </button>
+            </div>
+          </div>
 
-            <button
-              onClick={handleBrowseFamilies}
-              className="bg-transparent hover:bg-[#E9DFCE]/60 text-[#1D1A17] border border-[#5F252D] px-8 py-4 rounded-full text-base font-medium transition-smooth flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <span>{lang === "kn" ? "೮ ಆಹಾರ ವಿಭಾಗಗಳನ್ನು ನೋಡಿ" : "See the 8 food families"}</span>
-            </button>
+          {/* Right Column: Warli Art Video (Raw, borderless) */}
+          <div className="lg:col-span-5 flex flex-col items-center justify-center w-full">
+            <div className="relative w-full max-w-md lg:max-w-lg aspect-[16/10] flex items-center justify-center">
+              <video
+                src="/hero.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-contain mix-blend-multiply pointer-events-none select-none"
+              />
+            </div>
           </div>
         </div>
 

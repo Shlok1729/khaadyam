@@ -2,11 +2,13 @@
 
 import React, { useState } from "react";
 import { useKhaadyam } from "@/context/KhaadyamContext";
-import { Plus, X, Heart, Check } from "lucide-react";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
+import { Plus, X, Check } from "lucide-react";
 
 export function MemoryWallSection() {
   const { memories, addMemory, lang } = useKhaadyam();
 
+  // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [memoryText, setMemoryText] = useState("");
   const [authorName, setAuthorName] = useState("");
@@ -28,63 +30,62 @@ export function MemoryWallSection() {
     }, 1500);
   };
 
+  const cardItems = memories.map((m) => ({
+    quote: lang === "kn" && m.kannadaQuote ? m.kannadaQuote : m.quote,
+    name: m.author,
+    title: `${m.city}${m.relation ? ` · ${m.relation}` : ""}`,
+  }));
+
   return (
-    <section id="memory-wall" className="w-full py-20 md:py-28 px-4 md:px-8 bg-[#FAF9F5] border-b border-[#D9CFBF]/70">
-      <div className="max-w-7xl mx-auto flex flex-col gap-10">
+    <section
+      id="memory-wall"
+      className="w-full py-20 md:py-28 bg-[#FAF9F5] border-b border-[#D9CFBF]/70 overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-4 md:px-8 mb-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[#D9CFBF]/70">
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 max-w-xl">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#5F252D]">
+              {lang === "kn" ? "ಗ್ರಾಹಕರ ಧ್ವನಿ" : "Voices From Our Tables"}
+            </span>
             <h2 className="font-serif-brand text-3xl md:text-4xl text-[#1D1A17] font-normal">
               {lang === "kn"
                 ? "ನೆನಪಿನ ಗೋಡೆ: ಗ್ರಾಹಕರ ನೆನಪುಗಳು"
                 : "The memory wall: one line from each customer."}
             </h2>
-            <p className="text-sm md:text-base text-[#5A5048] max-w-xl">
+            <p className="text-sm md:text-base text-[#5A5048] leading-relaxed">
               {lang === "kn"
                 ? "ನಿಮ್ಮ ಅಜ್ಜ-ಅಜ್ಜಿಯ ಮನೆಯ ಊಟದ ರುಚಿ ಹೇಗಿತ್ತು? ನಿಮ್ಮ ಬಾಲ್ಯದ ಒಂದು ಸಾಲಿನ ನೆನಪನ್ನು ಹಂಚಿಕೊಳ್ಳಿ."
                 : "What did it taste like at your grandparents' dining table? Share a single sentence of childhood nostalgia."}
             </p>
           </div>
 
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="bg-[#5F252D] hover:bg-[#461920] text-[#F4EFE6] px-6 py-3 rounded-full text-xs sm:text-sm font-semibold transition-smooth shadow-sm cursor-pointer flex items-center gap-2 self-start md:self-end"
-          >
-            <Plus className="w-4 h-4 text-[#F4EFE6]" />
-            <span>
-              {lang === "kn"
-                ? "ಗೋಡೆಗೆ ನಿಮ್ಮ ನೆನಪನ್ನು ಸೇರಿಸಿ"
-                : "Add your memory to the wall"}
-            </span>
-          </button>
-        </div>
-
-        {/* Customer Memory Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {memories.map((m) => (
-            <div
-              key={m.id}
-              className="border-2 border-dashed border-[#BFB3A0] bg-[#FBF8F2] rounded-2xl p-6 md:p-8 flex flex-col justify-between gap-6 min-h-[180px] shadow-xs hover:border-[#5F252D] transition-smooth relative group"
+          <div className="flex items-center gap-3 self-start md:self-end">
+            {/* Add Memory Button */}
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="bg-[#5F252D] hover:bg-[#461920] text-[#F4EFE6] px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-smooth shadow-sm cursor-pointer flex items-center gap-2"
             >
-              <div className="flex flex-col gap-2">
-                <span className="text-[#5F252D] text-3xl font-serif-brand leading-none">“</span>
-                <p className="font-serif-brand text-lg md:text-xl text-[#1D1A17] leading-relaxed italic -mt-2">
-                  {lang === "kn" && m.kannadaQuote ? m.kannadaQuote : m.quote}
-                </p>
-              </div>
-
-              <div className="border-t border-[#E2D9CA] pt-3 flex items-center justify-between text-xs text-[#6B6157]">
-                <span className="font-semibold text-[#1D1A17]">
-                  {m.author}, {m.city}
-                </span>
-                <span className="text-[11px] text-[#5F252D] opacity-80 flex items-center gap-1">
-                  <Heart className="w-3 h-3 fill-current" />
-                  <span>{lang === "kn" ? "ದೃಢೀಕರಿಸಿದ ನೆನಪು" : "Verified memory"}</span>
-                </span>
-              </div>
-            </div>
-          ))}
+              <Plus className="w-4 h-4 text-[#F4EFE6]" />
+              <span>
+                {lang === "kn"
+                  ? "ನೆನಪು ಸೇರಿಸಿ"
+                  : "Add your memory"}
+              </span>
+            </button>
+          </div>
         </div>
+      </div>
+
+      {/* Infinite Moving Cards Carousel */}
+      <div className="w-full flex items-center justify-center">
+        <InfiniteMovingCards
+          items={cardItems}
+          direction="left"
+          speed="normal"
+          pauseOnHover={true}
+          className="w-full"
+        />
       </div>
 
       {/* Interactive Modal to Submit Memory */}

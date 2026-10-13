@@ -114,12 +114,12 @@ export function Footer() {
             </span>
             <ul className="space-y-2 text-xs md:text-sm text-[#F4EFE6]/80">
               <li>
-                <Link href="/#story" className="hover:text-white transition-smooth">
+                <Link href="/our-story" className="hover:text-white transition-smooth">
                   {lang === "kn" ? "ನಮ್ಮ ಪರಂಪರೆ" : "Our heritage recipes"}
                 </Link>
               </li>
               <li>
-                <Link href="/#story" className="hover:text-white transition-smooth">
+                <Link href="/our-story" className="hover:text-white transition-smooth">
                   {lang === "kn" ? "ಮಣ್ಣಿನಿಂದ ತಟ್ಟೆಯವರೆಗೆ" : "Soil to plate circle"}
                 </Link>
               </li>

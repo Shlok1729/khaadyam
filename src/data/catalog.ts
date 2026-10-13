@@ -473,4 +473,28 @@ export const CUSTOMER_MEMORIES: CustomerMemory[] = [
     city: "Hubballi",
     relation: "Family ancestral home",
   },
+  {
+    id: "mem-4",
+    quote: "Hot jowar rotti with Shenga Pudi and thick buffalo curd on a brass plate. Nothing in Bangalore ever tasted this real.",
+    kannadaQuote: "ಬಿಸಿ ಜೋಳದ ರೊಟ್ಟಿ, ಶೇಂಗಾ ಹಿಂಡಿ ಮತ್ತು ಗಟ್ಟಿ ಮೊಸರು. ಬೆಂಗಳೂರಿನಲ್ಲಿ ಇಂತಹ ಅಸಲಿ ರುಚಿ ಸಿಗಲು ಸಾಧ್ಯವೇ ಇಲ್ಲ.",
+    author: "Vijaykumar D.",
+    city: "Dharwad / Bengaluru",
+    relation: "North Karnataka tradition",
+  },
+  {
+    id: "mem-5",
+    quote: "Opening the parcel filled our London kitchen with the unmistakable aroma of Davangere Byadgi chillies.",
+    kannadaQuote: "ಲಂಡನ್‌ನಲ್ಲಿ ಪಾರ್ಸೆಲ್ ತೆರೆದ ಕ್ಷಣದಲ್ಲೇ ದಾವಣಗೆರೆಯ ಬ್ಯಾಡಗಿ ಮೆಣಸಿನ ಪರಿಮಳ ಇಡೀ ಮನೆ ತುಂಬಿತು.",
+    author: "Pooja & Chetan",
+    city: "London / Shivamogga",
+    relation: "Ancestral home memories",
+  },
+  {
+    id: "mem-6",
+    quote: "Pure cow ghee and Chitranna mix on a lazy Sunday morning. My kids finally asked for seconds without complaining.",
+    kannadaQuote: "ಭಾನುವಾರದ ಬೆಳಗ್ಗೆ ಶುದ್ಧ ತುಪ್ಪ ಮತ್ತು ಚಿತ್ರನ್ನ ಗೊಜ್ಜು. ಮಕ್ಕಳು ಖುಷಿಯಿಂದ ತಟ್ಟೆ ಖಾಲಿ ಮಾಡಿದರು.",
+    author: "Meenakshi S.",
+    city: "Mysuru",
+    relation: "Weekend family brunch",
+  },
 ];

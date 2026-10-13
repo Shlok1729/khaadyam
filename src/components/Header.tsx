@@ -93,8 +93,12 @@ export function Header() {
               {lang === "kn" ? "ಬಡಿಸಿ ಕಳಿಸಿ" : "Gift a Basket"}
             </Link>
             <Link
-              href="/#story"
-              className="hover:text-[#5F252D] transition-smooth relative py-1 hover:border-b-2 hover:border-[#5F252D]"
+              href="/our-story"
+              className={`hover:text-[#5F252D] transition-smooth relative py-1 ${
+                pathname?.includes("story")
+                  ? "text-[#5F252D] font-bold border-b-2 border-[#5F252D]"
+                  : "hover:border-b-2 hover:border-[#5F252D]"
+              }`}
             >
               {lang === "kn" ? "ನಮ್ಮ ಕತೆ" : "Our Story"}
             </Link>
@@ -188,11 +192,13 @@ export function Header() {
               <ArrowRight className="w-4 h-4 text-[#6B6157]" />
             </Link>
             <Link
-              href="/#story"
+              href="/our-story"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-between text-base font-medium text-[#1D1A17] py-2 border-b border-[#E2D9CA]"
             >
-              <span>{lang === "kn" ? "ನಮ್ಮ ಕತೆ" : "Our Story"}</span>
+              <span className={pathname?.includes("story") ? "font-bold text-[#5F252D]" : ""}>
+                {lang === "kn" ? "ನಮ್ಮ ಕತೆ" : "Our Story"}
+              </span>
               <ArrowRight className="w-4 h-4 text-[#6B6157]" />
             </Link>
             <Link
