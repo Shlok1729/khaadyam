@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { ScrollVine } from "@/components/ScrollVine";
 import { HeroSection } from "@/components/HeroSection";
 import { ShopSection } from "@/components/ShopSection";
 import { SubscriptionSection } from "@/components/SubscriptionSection";
@@ -10,6 +11,9 @@ import { QuickCommerceStrip } from "@/components/QuickCommerceStrip";
 export default function HomePage() {
   return (
     <>
+      {/* Scroll-driven Climber Vine in Background */}
+      <ScrollVine />
+
       {/* 1. Hero & The Threshold */}
       <HeroSection />
 
