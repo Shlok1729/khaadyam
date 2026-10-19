@@ -20,38 +20,34 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative w-full bg-[#FAF9F5] pt-12 pb-20 md:pt-16 md:pb-28 px-4 md:px-8 border-b border-[#D9CFBF]/60">
-      <div className="max-w-7xl mx-auto flex flex-col gap-12 md:gap-16">
-        {/* Threshold Banner */}
-        <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-sm text-[#5A5048]">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#5F252D] bg-[#E9DFCE] px-3 py-1 rounded-full">
-            {lang === "kn" ? "ಹೊಸ್ತಿಲು" : "The Threshold"}
-          </span>
-          <div className="flex items-center gap-3 text-sm md:text-base font-medium">
-            {lang === "kn" ? (
-              <span className="font-kannada">ಬನ್ನಿ / ಕೂತ್ಕೊಳ್ಳಿ / ಊಟ ಮಾಡಿ</span>
-            ) : (
-              <span>Come in / Sit down / Eat</span>
-            )}
-          </div>
+    <section className="relative w-full bg-[#FAF9F5] pt-8 pb-16 md:pt-12 md:pb-24 px-4 md:px-8 border-b border-[#D9CFBF]/60">
+      <div className="max-w-7xl mx-auto flex flex-col gap-8 md:gap-12">
+        {/* Simplified Clean Tracked-out Eyebrow Label */}
+        <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold tracking-[0.22em] uppercase text-[#5F252D]">
+          <span className="inline-block w-6 h-[1.5px] bg-[#5F252D]/60" />
+          {lang === "kn" ? (
+            <span className="font-kannada tracking-wider">ಬನ್ನಿ · ಕೂತ್ಕೊಳ್ಳಿ · ಊಟ ಮಾಡಿ</span>
+          ) : (
+            <span>COME IN · SIT DOWN · EAT</span>
+          )}
         </div>
 
         {/* Hero Main Grid: Left Editorial + Right Visual */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center lg:items-end">
           {/* Left Column: Title and Editorial Copy */}
-          <div className="lg:col-span-7 flex flex-col gap-6">
-            <h1 className="font-serif-brand text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.08] text-[#1D1A17] tracking-tight">
+          <div className="lg:col-span-7 flex flex-col gap-5 md:gap-6">
+            <h1 className="font-serif-brand text-3xl sm:text-4xl md:text-[2.75rem] lg:text-[3.15rem] xl:text-[3.6rem] font-normal leading-[1.08] text-[#1D1A17] tracking-tight">
               {lang === "kn" ? (
-                <span className="font-kannada leading-tight">
-                  ಪ್ರತಿಯೊಂದು ಮನೆಯಲ್ಲೂ ಒಬ್ಬ ಅಮ್ಮ ಇರುತ್ತಾಳೆ. <br />
-                  <span className="italic font-normal text-[#5F252D]">
+                <span className="font-kannada block leading-tight">
+                  ಪ್ರತಿಯೊಂದು ಮನೆಯಲ್ಲೂ ಒಬ್ಬ ಅಮ್ಮ ಇರುತ್ತಾಳೆ.
+                  <span className="block italic font-normal text-[#5F252D] mt-1 sm:mt-1.5">
                     ಖಾದ್ಯಂ ಆಕೆಯು ಉಳಿಸಿಕೊಂಡ ರುಚಿ.
                   </span>
                 </span>
               ) : (
                 <>
-                  Every home has an Amma. <br />
-                  <span className="italic font-normal text-[#5F252D]">
+                  <span className="block">Every home has an Amma.</span>
+                  <span className="block italic font-normal text-[#5F252D] mt-1 sm:mt-1.5">
                     Khaadyam is the taste she kept.
                   </span>
                 </>
@@ -68,36 +64,97 @@ export function HeroSection() {
               )}
             </p>
 
-            {/* Action CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-              <button
-                onClick={handleServeMeal}
-                className="group bg-[#5F252D] hover:bg-[#461920] text-[#F4EFE6] px-8 py-4 rounded-full text-base font-medium transition-smooth shadow-md flex items-center justify-center gap-3 cursor-pointer"
-              >
-                <span>{lang === "kn" ? "ಇಡೀ ತಟ್ಟೆ ಬಡಿಸಿ" : "Serve me a whole meal"}</span>
-                <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-smooth" />
-              </button>
+            {/* Action CTAs with Supporting Microcopy */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-4 pt-2">
+              {/* Primary CTA */}
+              <div className="flex-1 sm:flex-initial flex flex-col">
+                <button
+                  onClick={handleServeMeal}
+                  className="group bg-[#5F252D] hover:bg-[#471920] text-[#F4EFE6] px-6 sm:px-7 py-3 sm:py-3.5 rounded-2xl text-base font-medium transition-smooth shadow-md hover:shadow-lg flex items-center justify-between sm:justify-center gap-3 cursor-pointer"
+                >
+                  <div className="flex flex-col text-left">
+                    <span className="font-medium text-sm sm:text-base leading-tight">
+                      {lang === "kn" ? "ಇಡೀ ತಟ್ಟೆ ಬಡಿಸಿ" : "Serve me a whole meal"}
+                    </span>
+                    <span className="text-[11px] text-[#EADCD8]/80 font-normal tracking-wide mt-0.5">
+                      {lang === "kn" ? "ಕ್ಯುರೇಟೆಡ್ ಮಾಸಿಕ ತಟ್ಟೆಗಳು" : "Curated subscription boxes"}
+                    </span>
+                  </div>
+                  <ArrowDown className="w-4 h-4 text-[#F4EFE6] group-hover:translate-y-1 transition-transform flex-shrink-0" />
+                </button>
+              </div>
 
-              <button
-                onClick={handleBrowseFamilies}
-                className="bg-transparent hover:bg-[#E9DFCE]/60 text-[#1D1A17] border border-[#5F252D] px-8 py-4 rounded-full text-base font-medium transition-smooth flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <span>{lang === "kn" ? "೮ ಆಹಾರ ವಿಭಾಗಗಳನ್ನು ನೋಡಿ" : "See the 8 food families"}</span>
-              </button>
+              {/* Secondary CTA */}
+              <div className="flex-1 sm:flex-initial flex flex-col">
+                <button
+                  onClick={handleBrowseFamilies}
+                  className="group bg-transparent hover:bg-[#5F252D] text-[#1D1A17] hover:text-[#F4EFE6] border-[1.5px] border-[#5F252D] px-6 sm:px-7 py-3 sm:py-3.5 rounded-2xl text-base font-medium transition-smooth flex items-center justify-between sm:justify-center gap-3 cursor-pointer"
+                >
+                  <div className="flex flex-col text-left">
+                    <span className="font-medium text-sm sm:text-base leading-tight">
+                      {lang === "kn" ? "೮ ಆಹಾರ ವಿಭಾಗಗಳನ್ನು ನೋಡಿ" : "See the 8 food families"}
+                    </span>
+                    <span className="text-[11px] text-[#5A5048] group-hover:text-[#F4EFE6]/80 font-normal tracking-wide transition-colors mt-0.5">
+                      {lang === "kn" ? "ಪುಡಿಗಳು, ಉಪ್ಪಿನಕಾಯಿ ಮತ್ತು ಮಸಾಲೆಗಳು" : "Explore powders, pickles & masalas"}
+                    </span>
+                  </div>
+                  <span className="text-sm font-semibold transition-transform group-hover:translate-x-1 flex-shrink-0">
+                    →
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
 
-          {/* Right Column: Warli Art Video (Raw, borderless) */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center w-full">
-            <div className="relative w-full max-w-md lg:max-w-lg aspect-[16/10] flex items-center justify-center">
-              <video
-                src="/hero.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-contain mix-blend-multiply pointer-events-none select-none"
-              />
+          {/* Right Column: Grounded Warli Art Video with Arched Pedestal & Floating Badges */}
+          <div className="lg:col-span-5 flex flex-col items-center justify-end w-full relative">
+            {/* Soft Architectural Arched Backdrop */}
+            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-none aspect-[4/3] sm:aspect-[14/11] rounded-t-[120px] sm:rounded-t-[180px] rounded-b-3xl bg-gradient-to-b from-[#F5ECE2] via-[#EFE6DA] to-[#E6D7C7] border border-[#D9CFBF]/60 shadow-sm flex items-center justify-center p-6 sm:p-8 pb-4 overflow-visible">
+              {/* Floating Badge 1: Quality / Trust Rating */}
+              <div className="absolute -top-3 sm:-top-4 left-2 sm:-left-3 bg-[#FAF9F5]/95 backdrop-blur-md border border-[#D9CFBF] shadow-md rounded-2xl px-3 py-2 sm:px-3.5 sm:py-2.5 flex items-center gap-2.5 z-10 transition-transform hover:scale-105 select-none">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#5F252D]/10 flex items-center justify-center text-[#5F252D] font-bold text-xs sm:text-sm">
+                  ★
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-xs sm:text-sm font-semibold text-[#1D1A17] flex items-center gap-1">
+                    4.9 <span className="text-[#5F252D] text-[10px] sm:text-xs">★★★★★</span>
+                  </span>
+                  <span className="text-[10px] sm:text-[11px] text-[#5A5048]">
+                    {lang === "kn" ? "೧,೨೦೦+ ಮನೆಗಳ ಮೆಚ್ಚುಗೆ" : "From 1,200+ South Indian homes"}
+                  </span>
+                </div>
+              </div>
+
+              {/* Floating Badge 2: Authentic Bharani Jar Food Cue */}
+              <div className="absolute -bottom-3 sm:-bottom-4 right-1 sm:-right-3 bg-[#FAF9F5]/95 backdrop-blur-md border border-[#D9CFBF] shadow-md rounded-2xl p-2 sm:p-2.5 pr-3 sm:pr-4 flex items-center gap-2.5 sm:gap-3 z-10 transition-transform hover:scale-105 select-none">
+                <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl overflow-hidden border border-[#D9CFBF]/90 bg-[#FAF9F5] flex-shrink-0 shadow-sm">
+                  <img
+                    src="/bharani.jpg"
+                    alt="Traditional Ceramic Bharani Jar"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-xs sm:text-sm font-semibold text-[#5F252D] tracking-tight">
+                    {lang === "kn" ? "ಮಣ್ಣಿನ ಭರಣಿ ಮಾಗುವಿಕೆ" : "Ceramic Bharani-Matured"}
+                  </span>
+                  <span className="text-[10px] sm:text-[11px] text-[#5A5048]">
+                    {lang === "kn" ? "ಕಲ್ಲಿನಲ್ಲಿ ಅರೆದ ಸಾಂಪ್ರದಾಯಿಕ ಆಹಾರ" : "Stone-ground · Zero preservatives"}
+                  </span>
+                </div>
+              </div>
+
+              {/* Video with seamless blend, no rectangular box or shadow */}
+              <div className="relative w-full h-full flex items-center justify-center">
+                <video
+                  src="/hero.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-contain mix-blend-multiply pointer-events-none select-none"
+                />
+              </div>
             </div>
           </div>
         </div>

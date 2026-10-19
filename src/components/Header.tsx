@@ -21,25 +21,23 @@ export function Header() {
   return (
     <>
       {/* Announcement Bar */}
-      <div className="bg-[#5F252D] text-[#F4EFE6] px-4 py-2 text-xs md:text-sm font-medium tracking-wide flex items-center justify-between">
+      <div className="bg-[#5F252D] text-[#F4EFE6] px-4 py-2 text-xs md:text-sm font-medium tracking-wide flex items-center justify-between border-b border-[#4A1C23]">
         <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="font-semibold text-[#EADCD8]">
-              {lang === "kn" ? "ಹೊಸ್ತಿಲು" : "The Threshold"}
+              {lang === "kn" ? "ದಾವಣಗೆರೆ ಕೈರುಚಿ" : "Freshly Ground in Davangere"}
             </span>
-            <span className="hidden sm:inline text-white/40">·</span>
-            <span className="hidden sm:inline">
+            <span className="text-white/40">·</span>
+            <span className="text-[#F4EFE6]/90">
               {lang === "kn"
-                ? "ಪ್ರತಿಯೊಂದು ಮನೆಯಲ್ಲೂ ಒಬ್ಬ ಅಮ್ಮ ಇರುತ್ತಾಳೆ. ಖಾದ್ಯಂ ಆಕೆಯ ಕೈರುಚಿ."
-                : "Every home has an Amma. Khaadyam is the taste she kept."}
+                ? "ಕಲ್ಲಿನಲ್ಲಿ ಅರೆದ ಸಾಂಪ್ರದಾಯಿಕ ಆಹಾರ ಮತ್ತು ಮಸಾಲೆಗಳು"
+                : "Stone-ground powders & wood-pressed flavours"}
             </span>
           </div>
           <div className="flex items-center gap-4 text-xs">
-            <span className="hidden md:inline text-[#EADCD8]">
-              {lang === "kn" ? "ದಾವಣಗೆರೆಯಲ್ಲಿ ಸಿದ್ಧವಾದ ಸಾಂಪ್ರದಾಯಿಕ ಆಹಾರ" : "Freshly ground in Davangere"}
-            </span>
-            <span className="text-[#EADCD8]/70">
-              {lang === "kn" ? "₹499 ಮೇಲ್ಪಟ್ಟ ಆರ್ಡರ್‌ಗಳಿಗೆ ಉಚಿತ ವಿತರಣೆ" : "Free shipping on plates over ₹499"}
+            <span className="hidden sm:inline text-white/40">|</span>
+            <span className="text-[#EADCD8] font-medium">
+              {lang === "kn" ? "₹499 ಮೇಲ್ಪಟ್ಟ ಆರ್ಡರ್‌ಗಳಿಗೆ ಉಚಿತ ವಿತರಣೆ" : "Free shipping on orders over ₹499"}
             </span>
           </div>
         </div>

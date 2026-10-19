@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 interface VineNode {
   id: string;
@@ -34,6 +35,7 @@ const VINE_NODES: VineNode[] = [
 ];
 
 export function ScrollVine() {
+  const pathname = usePathname();
   const [progress, setProgress] = useState(0);
   const stemPathRef = useRef<SVGPathElement>(null);
   const [pathLength, setPathLength] = useState(1200);
@@ -49,14 +51,20 @@ export function ScrollVine() {
       if (scrollHeight > 0) {
         const rawProgress = window.scrollY / scrollHeight;
         setProgress(Math.min(1, Math.max(0, rawProgress)));
+      } else {
+        setProgress(0);
       }
     };
 
     window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    window.addEventListener("resize", updateScrollProgress, { passive: true });
     updateScrollProgress();
 
-    return () => window.removeEventListener("scroll", updateScrollProgress);
-  }, []);
+    return () => {
+      window.removeEventListener("scroll", updateScrollProgress);
+      window.removeEventListener("resize", updateScrollProgress);
+    };
+  }, [pathname]);
 
   // Calculate stem stroke dash offset
   const stemOffset = pathLength * (1 - Math.min(1, progress * 1.05));
