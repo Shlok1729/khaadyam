@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useKhaadyam } from "@/context/KhaadyamContext";
 import { FOOD_FAMILIES, PRODUCTS, MEAL_PLATES, Product, MealPlate, ProductVariant } from "@/data/catalog";
-import { Check, Calendar, Info, Sparkles, Languages } from "lucide-react";
+import { Check, Calendar, Info, Sparkles, Languages, UtensilsCrossed, Layers } from "lucide-react";
 
 // Product visual header component for high appetite appeal
 function ProductCardVisual({ prod, lang }: { prod: Product; lang: string }) {
@@ -28,10 +28,10 @@ function ProductCardVisual({ prod, lang }: { prod: Product; lang: string }) {
       <div className="absolute top-3 right-3 z-10">
         <span className="text-[10px] font-medium text-[#5F252D] px-2.5 py-0.5 rounded-full bg-[#FAF9F5]/90 border border-[#D9CFBF]/70 shadow-xs">
           {prod.familyId === "uppinakayi"
-            ? (lang === "kn" ? "🏺 ಭರಣಿ ಮಾಗುವಿಕೆ" : "🏺 Bharani-Matured")
+            ? (lang === "kn" ? "ಭರಣಿ ಮಾಗುವಿಕೆ" : "Bharani-Matured")
             : prod.familyId === "sandige-happala"
-            ? (lang === "kn" ? "☀️ ಬಿಸಿಲಿನ ಸಂಸ್ಕಾರ" : "☀️ Sun-Dried")
-            : (lang === "kn" ? "✨ ಕಲ್ಲಿನಲ್ಲಿ ಅರೆದದ್ದು" : "✨ Stone-Ground")}
+            ? (lang === "kn" ? "ಬಿಸಿಲಿನ ಸಂಸ್ಕಾರ" : "Sun-Dried")
+            : (lang === "kn" ? "ಕಲ್ಲಿನಲ್ಲಿ ಅರೆದದ್ದು" : "Stone-Ground")}
         </span>
       </div>
 
@@ -163,7 +163,7 @@ export function ShopSection() {
                     : "text-[#5A5048] hover:text-[#1D1A17] hover:bg-[#FAF9F5]/60"
                 }`}
               >
-                <span>🍽️</span>
+                <UtensilsCrossed className="w-4 h-4 flex-shrink-0" />
                 <span>{lang === "kn" ? "ಕ್ಯುರೇಟೆಡ್ ತಟ್ಟೆಗಳು (೬)" : "Curated Meals"}</span>
               </button>
 
@@ -176,7 +176,7 @@ export function ShopSection() {
                     : "text-[#5A5048] hover:text-[#1D1A17] hover:bg-[#FAF9F5]/60"
                 }`}
               >
-                <span>🏺</span>
+                <Layers className="w-4 h-4 flex-shrink-0" />
                 <span>{lang === "kn" ? "೮ ಆಹಾರ ವಿಭಾಗಗಳು" : "The 8 Food Families"}</span>
               </button>
             </div>

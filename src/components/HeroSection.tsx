@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useKhaadyam } from "@/context/KhaadyamContext";
-import { ArrowDown, Sparkles } from "lucide-react";
+import { ArrowDown, Sparkles, Star, Sun, Leaf } from "lucide-react";
 
 export function HeroSection() {
   const { lang, setShopDoor } = useKhaadyam();
@@ -112,12 +112,19 @@ export function HeroSection() {
             <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-none aspect-[4/3] sm:aspect-[14/11] rounded-t-[120px] sm:rounded-t-[180px] rounded-b-3xl bg-gradient-to-b from-[#F5ECE2] via-[#EFE6DA] to-[#E6D7C7] border border-[#D9CFBF]/60 shadow-sm flex items-center justify-center p-6 sm:p-8 pb-4 overflow-visible">
               {/* Floating Badge 1: Quality / Trust Rating */}
               <div className="absolute -top-3 sm:-top-4 left-2 sm:-left-3 bg-[#FAF9F5]/95 backdrop-blur-md border border-[#D9CFBF] shadow-md rounded-2xl px-3 py-2 sm:px-3.5 sm:py-2.5 flex items-center gap-2.5 z-10 transition-transform hover:scale-105 select-none">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#5F252D]/10 flex items-center justify-center text-[#5F252D] font-bold text-xs sm:text-sm">
-                  ★
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#5F252D]/10 flex items-center justify-center text-[#5F252D]">
+                  <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#5F252D] text-[#5F252D]" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-xs sm:text-sm font-semibold text-[#1D1A17] flex items-center gap-1">
-                    4.9 <span className="text-[#5F252D] text-[10px] sm:text-xs">★★★★★</span>
+                  <span className="text-xs sm:text-sm font-semibold text-[#1D1A17] flex items-center gap-1.5">
+                    4.9
+                    <span className="flex items-center gap-0.5 text-[#5F252D]">
+                      <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-[#5F252D] text-[#5F252D]" />
+                      <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-[#5F252D] text-[#5F252D]" />
+                      <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-[#5F252D] text-[#5F252D]" />
+                      <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-[#5F252D] text-[#5F252D]" />
+                      <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-[#5F252D] text-[#5F252D]" />
+                    </span>
                   </span>
                   <span className="text-[10px] sm:text-[11px] text-[#5A5048]">
                     {lang === "kn" ? "೧,೨೦೦+ ಮನೆಗಳ ಮೆಚ್ಚುಗೆ" : "From 1,200+ South Indian homes"}
@@ -191,7 +198,7 @@ export function HeroSection() {
           <div className="bg-[#FBF8F2] border border-[#E2D9CA] rounded-2xl p-6 flex flex-col justify-between gap-6 hover:shadow-md transition-smooth">
             <div className="h-44 rounded-xl bg-gradient-to-br from-[#E9DFCE] to-[#D9CFBF] border border-[#D9CFBF]/60 flex flex-col items-center justify-center p-4 text-center relative overflow-hidden">
               <div className="w-12 h-12 rounded-full bg-[#5F252D]/10 flex items-center justify-center mb-2">
-                <span className="text-lg">☀️</span>
+                <Sun className="w-6 h-6 text-[#764D30]" />
               </div>
               <span className="font-serif-brand text-xl text-[#764D30]">
                 {lang === "kn" ? "ಬಿಸಿಲಿನ ಸಂಸ್ಕಾರ" : "Sun-Cured Spices"}
@@ -219,7 +226,7 @@ export function HeroSection() {
           <div className="bg-[#FBF8F2] border border-[#E2D9CA] rounded-2xl p-6 flex flex-col justify-between gap-6 hover:shadow-md transition-smooth">
             <div className="h-44 rounded-xl bg-gradient-to-br from-[#EDE5D6] to-[#EADCD8] border border-[#D9CFBF]/60 flex flex-col items-center justify-center p-4 text-center relative overflow-hidden">
               <div className="w-12 h-12 rounded-full bg-[#506D41]/20 flex items-center justify-center mb-2">
-                <span className="text-lg">🌿</span>
+                <Leaf className="w-6 h-6 text-[#506D41]" />
               </div>
               <span className="font-serif-brand text-xl text-[#506D41]">
                 {lang === "kn" ? "ತಿಂಗಳ ನೆಮ್ಮದಿ" : "Monthly Replenish"}

@@ -39,7 +39,7 @@ export function PlateDrawer() {
       )
       .join("\n");
 
-    const message = `Namaskara Amma's kitchen team! 🙏\n\nI would like to order this plate from Khaadyam:\n\n${itemsList}\n\n*Total Plate:* ₹${plateTotal}\n*Phone:* ${phone || "Will share"}\n*Address:* ${address || "Will share"}\n${boxNote ? `*Note for the box:* ${boxNote}` : ""}\n\nPlease confirm and share UPI payment link. Dhanyavada!`;
+    const message = `Namaskara Amma's kitchen team!\n\nI would like to order this plate from Khaadyam:\n\n${itemsList}\n\n*Total Plate:* ₹${plateTotal}\n*Phone:* ${phone || "Will share"}\n*Address:* ${address || "Will share"}\n${boxNote ? `*Note for the box:* ${boxNote}` : ""}\n\nPlease confirm and share UPI payment link. Dhanyavada!`;
 
     const encoded = encodeURIComponent(message);
     window.open(`https://wa.me/919876543210?text=${encoded}`, "_blank");

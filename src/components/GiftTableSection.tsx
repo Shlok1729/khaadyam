@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useKhaadyam } from "@/context/KhaadyamContext";
 import { MEAL_PLATES, MealPlate } from "@/data/catalog";
-import { Heart, Send } from "lucide-react";
+import { Heart, Send, Check } from "lucide-react";
 
 export function GiftTableSection() {
   const { addMealToPlate, setBoxNote, lang } = useKhaadyam();
@@ -126,8 +126,11 @@ export function GiftTableSection() {
               </span>
             </button>
             {sentSuccess && (
-              <span className="text-xs text-[#506D41] font-semibold mt-2 block animate-in fade-in">
-                {lang === "kn" ? "✓ ಉಡುಗೊರೆ ತಟ್ಟೆ ತಟ್ಟೆಗೆ ಸೇರಿಸಲಾಗಿದೆ!" : "✓ Gift meal and card note added to your plate!"}
+              <span className="text-xs text-[#506D41] font-semibold mt-2 inline-flex items-center gap-1.5 animate-in fade-in">
+                <Check className="w-3.5 h-3.5 text-[#506D41]" />
+                <span>
+                  {lang === "kn" ? "ಉಡುಗೊರೆ ತಟ್ಟೆ ತಟ್ಟೆಗೆ ಸೇರಿಸಲಾಗಿದೆ!" : "Gift meal and card note added to your plate!"}
+                </span>
               </span>
             )}
           </div>

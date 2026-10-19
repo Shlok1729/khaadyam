@@ -49,6 +49,7 @@ interface KhaadyamContextType {
   addToCustomList: (product: Product, variant: ProductVariant) => void;
   removeFromCustomList: (productId: string, variantId: string) => void;
   updateCustomListQuantity: (productId: string, variantId: string, delta: number) => void;
+  updateCustomListItemVariant: (productId: string, oldVariantId: string, newVariant: ProductVariant) => void;
   subscriptionTenure: 6 | 9 | 12;
   setSubscriptionTenure: (tenure: 6 | 9 | 12) => void;
   dispatchDay: 5 | 15 | 25;
@@ -246,6 +247,42 @@ export function KhaadyamProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
+  const updateCustomListItemVariant = (
+    productId: string,
+    oldVariantId: string,
+    newVariant: ProductVariant
+  ) => {
+    setCustomList((prev) => {
+      const current = prev.find(
+        (i) => i.product.id === productId && i.variant.id === oldVariantId
+      );
+      if (!current) return prev;
+
+      // Check if new variant is already in list
+      const existing = prev.find(
+        (i) => i.product.id === productId && i.variant.id === newVariant.id
+      );
+
+      if (existing && existing.variant.id !== oldVariantId) {
+        return prev
+          .filter(
+            (i) => !(i.product.id === productId && i.variant.id === oldVariantId)
+          )
+          .map((i) =>
+            i.product.id === productId && i.variant.id === newVariant.id
+              ? { ...i, quantity: i.quantity + current.quantity }
+              : i
+          );
+      }
+
+      return prev.map((i) =>
+        i.product.id === productId && i.variant.id === oldVariantId
+          ? { ...i, variant: newVariant }
+          : i
+      );
+    });
+  };
+
   const rawMonthlyTotal = customList.reduce(
     (sum, item) => sum + item.variant.price * item.quantity,
     0
@@ -295,6 +332,7 @@ export function KhaadyamProvider({ children }: { children: React.ReactNode }) {
         addToCustomList,
         removeFromCustomList,
         updateCustomListQuantity,
+        updateCustomListItemVariant,
         subscriptionTenure,
         setSubscriptionTenure,
         dispatchDay,
