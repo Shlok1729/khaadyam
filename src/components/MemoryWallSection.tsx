@@ -33,13 +33,15 @@ export function MemoryWallSection() {
   const cardItems = memories.map((m) => ({
     quote: lang === "kn" && m.kannadaQuote ? m.kannadaQuote : m.quote,
     name: m.author,
+    city: m.city,
+    relation: m.relation,
     title: `${m.city}${m.relation ? ` · ${m.relation}` : ""}`,
   }));
 
   return (
     <section
       id="memory-wall"
-      className="w-full py-20 md:py-28 bg-[#FAF9F5] border-b border-[#D9CFBF]/70 overflow-hidden"
+      className="w-full pt-14 pb-10 md:pt-16 md:pb-12 bg-[#FAF9F5] border-b border-[#D9CFBF]/70 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 mb-10">
         {/* Section Header */}
@@ -60,24 +62,27 @@ export function MemoryWallSection() {
             </p>
           </div>
 
-          <div className="flex items-center gap-3 self-start md:self-end">
+          <div className="flex flex-col items-start md:items-end gap-1.5 self-start md:self-end shrink-0">
             {/* Add Memory Button */}
             <button
               onClick={() => setIsModalOpen(true)}
-              className="bg-[#5F252D] hover:bg-[#461920] text-[#F4EFE6] px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-smooth shadow-sm cursor-pointer flex items-center gap-2"
+              className="bg-[#5F252D] hover:bg-[#461920] text-[#F4EFE6] px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-smooth shadow-sm cursor-pointer flex items-center gap-2 group"
             >
-              <Plus className="w-4 h-4 text-[#F4EFE6]" />
+              <Plus className="w-4 h-4 text-[#F4EFE6] group-hover:rotate-90 transition-transform duration-200" />
               <span>
                 {lang === "kn"
                   ? "ನೆನಪು ಸೇರಿಸಿ"
                   : "Add your memory"}
               </span>
             </button>
+            <span className="text-[11px] text-[#7A6E63] font-normal">
+              {lang === "kn" ? "ಕೇವಲ ೩೦ ಸೆಕೆಂಡುಗಳು ಬೇಕಾಗುತ್ತವೆ" : "Takes 30 seconds to share your story"}
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Infinite Moving Cards Carousel */}
+      {/* Infinite Moving Cards Carousel with Edge Fade Mask */}
       <div className="w-full flex items-center justify-center">
         <InfiniteMovingCards
           items={cardItems}
@@ -100,13 +105,16 @@ export function MemoryWallSection() {
             </button>
 
             <div>
-              <h3 className="font-serif-brand text-2xl text-[#1D1A17] mt-1">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#5F252D]/10 text-[#5F252D] text-[10px] font-semibold uppercase tracking-wider mb-2">
+                {lang === "kn" ? "ಸಮುದಾಯದ ನೆನಪು · ಕೇವಲ ೩೦ ಸೆಕೆಂಡುಗಳು" : "Community Voices · Takes 30 seconds"}
+              </div>
+              <h3 className="font-serif-brand text-2xl text-[#1D1A17]">
                 {lang === "kn" ? "ಗೋಡೆಗೆ ನಿಮ್ಮ ನೆನಪನ್ನು ಸೇರಿಸಿ" : "Add your memory"}
               </h3>
-              <p className="text-xs text-[#5A5048] mt-1">
+              <p className="text-xs text-[#5A5048] mt-1 leading-relaxed">
                 {lang === "kn"
-                  ? "ಅಜ್ಜ-ಅಜ್ಜಿಯ ಮನೆಯ ಊಟದ ರುಚಿ ನೆನಪಿಸಿಕೊಳ್ಳಿ:"
-                  : "What did it taste like at your grandparents' table?"}
+                  ? "ಅಜ್ಜ-ಅಜ್ಜಿಯ ಮನೆಯ ಊಟದ ರುಚಿ ನೆನಪಿಸಿಕೊಳ್ಳಿ. ನಿಮ್ಮ ಬಾಲ್ಯದ ಒಂದು ಸಾಲಿನ ನೆನಪನ್ನು ಹಂಚಿಕೊಳ್ಳಿ:"
+                  : "What did it taste like at your grandparents' dining table? Share a single sentence of childhood nostalgia:"}
               </p>
             </div>
 

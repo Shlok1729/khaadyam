@@ -6,14 +6,16 @@ import React, { useEffect, useState } from "react";
 export const InfiniteMovingCards = ({
   items,
   direction = "left",
-  speed = "fast",
+  speed = "normal",
   pauseOnHover = true,
   className,
 }: {
   items: {
     quote: string;
     name: string;
-    title: string;
+    city?: string;
+    relation?: string;
+    title?: string;
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
@@ -57,41 +59,55 @@ export const InfiniteMovingCards = ({
   return (
     <div
       ref={containerRef}
+      style={{
+        WebkitMaskImage:
+          "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+        maskImage:
+          "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+      }}
       className={cn(
-        "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_5%,white_95%,transparent)]",
+        "group scroller relative z-20 w-full overflow-hidden",
         className,
       )}
     >
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
+          "flex w-max min-w-full shrink-0 flex-nowrap gap-5 py-4",
           start && "animate-scroll",
-          pauseOnHover && "hover:[animation-play-state:paused]",
+          pauseOnHover && "group-hover:[animation-play-state:paused] hover:[animation-play-state:paused]",
         )}
       >
         {duplicatedItems.map((item, idx) => (
           <li
-            className="relative w-[350px] max-w-full shrink-0 rounded-2xl border border-b-0 border-zinc-200 bg-[linear-gradient(180deg,#fafafa,#f5f5f5)] px-8 py-6 md:w-[450px] dark:border-zinc-700 dark:bg-[linear-gradient(180deg,#27272a,#18181b)] shadow-xs select-none"
+            className="relative w-[360px] md:w-[460px] max-w-full shrink-0 rounded-2xl border border-[#4A262C] bg-[#2A181A] px-7 py-6 sm:px-8 sm:py-7 shadow-lg select-none flex flex-col justify-between"
             key={`${item.name}-${idx}`}
           >
             <blockquote>
               <div
                 aria-hidden="true"
                 className="user-select-none pointer-events-none absolute -top-0.5 -left-0.5 -z-1 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-              ></div>
-              <span className="relative z-20 text-sm leading-[1.6] font-normal text-neutral-800 dark:text-gray-100 font-serif-brand italic">
+              />
+              <p className="relative z-20 text-[15px] sm:text-base leading-relaxed font-serif-brand italic text-[#FDFBF7]">
                 “{item.quote}”
-              </span>
-              <div className="relative z-20 mt-6 flex flex-row items-center">
-                <span className="flex flex-col gap-1">
-                  <span className="text-sm leading-[1.6] font-semibold text-neutral-700 dark:text-gray-200">
+              </p>
+              <div className="relative z-20 mt-6 pt-4 border-t border-[#4A262C] flex items-center justify-between gap-3">
+                <div className="flex flex-col">
+                  <span className="text-sm font-semibold text-[#F4EFE6] tracking-tight">
                     {item.name}
                   </span>
-                  <span className="text-xs leading-[1.6] font-normal text-neutral-500 dark:text-gray-400">
-                    {item.title}
+                  {item.relation && (
+                    <span className="text-[11px] text-[#EADCD8]/70 mt-0.5 font-normal">
+                      {item.relation}
+                    </span>
+                  )}
+                </div>
+
+                {(item.city || item.title) && (
+                  <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-medium bg-[#3D2024] text-[#E3C588] border border-[#582A33] shrink-0 tracking-wide">
+                    {item.city || item.title}
                   </span>
-                </span>
+                )}
               </div>
             </blockquote>
           </li>

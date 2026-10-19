@@ -91,7 +91,8 @@ body {
   animation-direction: var(--animation-direction, normal) !important;
 }
 
-.animate-scroll:hover {
+.animate-scroll:hover,
+.scroller:hover .animate-scroll {
   animation-play-state: paused !important;
 }
 
