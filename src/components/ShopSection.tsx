@@ -1,9 +1,77 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { useKhaadyam } from "@/context/KhaadyamContext";
 import { FOOD_FAMILIES, PRODUCTS, MEAL_PLATES, Product, MealPlate, ProductVariant } from "@/data/catalog";
-import { Plus, Check, Calendar, ArrowRight, Info, ChevronDown } from "lucide-react";
+import { Check, Calendar, Info, Sparkles, Languages } from "lucide-react";
+
+// Product visual header component for high appetite appeal
+function ProductCardVisual({ prod, lang }: { prod: Product; lang: string }) {
+  const family = FOOD_FAMILIES.find((f) => f.id === prod.familyId);
+
+  return (
+    <div className="relative w-full h-44 rounded-t-2xl overflow-hidden bg-gradient-to-br from-[#F5EDE3] via-[#EFE5D8] to-[#E5D7C6] border-b border-[#D9CFBF]/70 flex items-center justify-center p-4 group-hover:brightness-[1.02] transition-all">
+      {/* Subtle traditional texture in background */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(#5F252D_1px,transparent_1px)] [background-size:12px_12px]" />
+
+      {/* Floating Category Pill */}
+      <div className="absolute top-3 left-3 z-10">
+        <span
+          className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#FAF9F5]/95 backdrop-blur-md shadow-xs border border-[#D9CFBF]/80"
+          style={{ color: prod.accentColor }}
+        >
+          {lang === "kn" ? family?.kannadaName : family?.name}
+        </span>
+      </div>
+
+      {/* Floating Trust / Craft Chip */}
+      <div className="absolute top-3 right-3 z-10">
+        <span className="text-[10px] font-medium text-[#5F252D] px-2.5 py-0.5 rounded-full bg-[#FAF9F5]/90 border border-[#D9CFBF]/70 shadow-xs">
+          {prod.familyId === "uppinakayi"
+            ? (lang === "kn" ? "🏺 ಭರಣಿ ಮಾಗುವಿಕೆ" : "🏺 Bharani-Matured")
+            : prod.familyId === "sandige-happala"
+            ? (lang === "kn" ? "☀️ ಬಿಸಿಲಿನ ಸಂಸ್ಕಾರ" : "☀️ Sun-Dried")
+            : (lang === "kn" ? "✨ ಕಲ್ಲಿನಲ್ಲಿ ಅರೆದದ್ದು" : "✨ Stone-Ground")}
+        </span>
+      </div>
+
+      {/* Visual Content based on product type */}
+      {prod.familyId === "uppinakayi" || prod.familyId === "chutney-gojju" ? (
+        <div className="relative w-28 h-28 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+          <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-md border-2 border-white/80 bg-[#FAF9F5]">
+            <img
+              src="/bharani.jpg"
+              alt={prod.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      ) : (
+        /* Artisanal Brass Katori & Roasted Powder Presentation */
+        <div className="relative flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+          <div className="relative w-24 h-24 rounded-full border-4 border-[#C8A265] bg-gradient-to-br from-[#E3C588] via-[#B88E4B] to-[#8F6A2C] shadow-lg flex items-center justify-center p-1.5">
+            {/* The spice powder bed */}
+            <div
+              className="w-full h-full rounded-full shadow-inner flex items-center justify-center relative overflow-hidden"
+              style={{ backgroundColor: prod.accentColor }}
+            >
+              <div className="absolute inset-0 bg-black/15" />
+              {/* Powder grain texture ring */}
+              <div className="absolute inset-1 rounded-full border border-dashed border-white/25" />
+              <span className="relative text-xs text-[#FAF9F5] font-serif-brand font-medium tracking-tight text-center px-1 drop-shadow-xs">
+                {lang === "kn" ? prod.kannadaTitle.split(" ")[0] : prod.title.split(" ")[0]}
+              </span>
+            </div>
+            {/* Traditional Brass Spoon Accent */}
+            <div className="absolute -bottom-2 -right-3 transform rotate-[35deg] bg-gradient-to-r from-[#DFB876] to-[#9A7432] w-12 h-3 rounded-full shadow-md border border-[#F5E0A9]/60 flex items-center px-1">
+              <div className="w-2.5 h-2.5 rounded-full bg-[#FAF9F5]/40 ml-auto" />
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function ShopSection() {
   const {
@@ -16,25 +84,14 @@ export function ShopSection() {
     lang,
   } = useKhaadyam();
 
-  // Dropdown state for Two-Door Switcher
-  const [doorDropdownOpen, setDoorDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setDoorDropdownOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
   // Selected Category Filter for Door B
   const [selectedFamilyId, setSelectedFamilyId] = useState<string>("all");
 
   // Track selected variant per product (productId -> variantId)
   const [selectedVariants, setSelectedVariants] = useState<Record<string, string>>({});
+
+  // Per-card Amma note language toggle ("kn" or "en")
+  const [noteLangs, setNoteLangs] = useState<Record<string, "kn" | "en">>({});
 
   // Feedback toast state
   const [toastMsg, setToastMsg] = useState<string | null>(null);
@@ -53,6 +110,18 @@ export function ShopSection() {
     setSelectedVariants((prev) => ({ ...prev, [productId]: variantId }));
   };
 
+  const getNoteLang = (prodId: string) => {
+    return noteLangs[prodId] || (lang === "kn" ? "kn" : "en");
+  };
+
+  const toggleNoteLang = (prodId: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setNoteLangs((prev) => {
+      const current = prev[prodId] || (lang === "kn" ? "kn" : "en");
+      return { ...prev, [prodId]: current === "kn" ? "en" : "kn" };
+    });
+  };
+
   const filteredProducts =
     selectedFamilyId === "all"
       ? PRODUCTS
@@ -69,99 +138,48 @@ export function ShopSection() {
       )}
 
       <div className="max-w-7xl mx-auto flex flex-col gap-10">
-        {/* Header & Two-Door Switcher */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[#D9CFBF]/70">
-          <div className="flex flex-col gap-2">
-            <h2 className="font-serif-brand text-3xl md:text-5xl text-[#1D1A17] font-normal">
-              {lang === "kn" ? "ಏನ್ ಬಡಿಸ್ಲಿ?" : "What shall I serve?"}
-            </h2>
-            <p className="text-sm md:text-base text-[#5A5048] max-w-xl">
-              {lang === "kn"
-                ? "ಗೊತ್ತಾಗುತ್ತಿಲ್ಲವೇ? ಇಡೀ ತಟ್ಟೆಯಿಂದ ಶುರುಮಾಡಿ. ನಿರ್ದಿಷ್ಟ ಪದಾರ್ಥ ಬೇಕೇ? ಎಂಟು ವಿಭಾಗಗಳಿಗೆ ಬದಲಾಯಿಸಿ."
-                : "Not sure what goes where? Start with a curated meal. Know what you want? Switch to the eight families."}
-            </p>
-          </div>
+        {/* Header & Prominent Two-Door Segmented Switcher */}
+        <div className="flex flex-col gap-6 pb-6 border-b border-[#D9CFBF]/70">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="flex flex-col gap-2">
+              <h2 className="font-serif-brand text-3xl md:text-5xl text-[#1D1A17] font-normal">
+                {lang === "kn" ? "ಏನ್ ಬಡಿಸ್ಲಿ?" : "What shall I serve?"}
+              </h2>
+              <p className="text-sm md:text-base text-[#5A5048] max-w-xl">
+                {lang === "kn"
+                  ? "ಗೊತ್ತಾಗುತ್ತಿಲ್ಲವೇ? ಇಡೀ ತಟ್ಟೆಯಿಂದ ಶುರುಮಾಡಿ. ನಿರ್ದಿಷ್ಟ ಪದಾರ್ಥ ಬೇಕೇ? ಎಂಟು ವಿಭಾಗಗಳಿಗೆ ಬದಲಾಯಿಸಿ."
+                  : "Not sure what goes where? Start with a curated meal. Know what you want? Switch to the eight families."}
+              </p>
+            </div>
 
-          {/* The Door Selector Dropdown */}
-          <div ref={dropdownRef} className="relative self-start md:self-end">
-            <button
-              id="shop-door-dropdown-btn"
-              type="button"
-              onClick={() => setDoorDropdownOpen(!doorDropdownOpen)}
-              className="flex items-center gap-3 bg-[#E9DFCE] hover:bg-[#E2D6C2] text-[#1D1A17] px-5 py-2.5 rounded-full border border-[#D9CFBF] text-sm font-medium transition-smooth shadow-xs cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#5F252D]/30 min-w-[170px] justify-between"
-              aria-haspopup="listbox"
-              aria-expanded={doorDropdownOpen}
-            >
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#5F252D]" />
-                <span className="font-serif-brand text-base tracking-tight text-[#1D1A17]">
-                  {shopDoor === "meal"
-                    ? (lang === "kn" ? "ತಟ್ಟೆಯಂತೆ" : "By meal")
-                    : (lang === "kn" ? "ವಿಭಾಗದಂತೆ" : "By category")}
-                </span>
-              </div>
-              <ChevronDown
-                className={`w-4 h-4 text-[#5F252D] transition-transform duration-200 ${
-                  doorDropdownOpen ? "rotate-180" : ""
+            {/* Prominent Segmented Tab Switcher */}
+            <div className="inline-flex p-1.5 rounded-2xl bg-[#EBDCCF]/80 border border-[#D9CFBF] shadow-xs self-start md:self-auto">
+              <button
+                type="button"
+                onClick={() => setShopDoor("meal")}
+                className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 cursor-pointer ${
+                  shopDoor === "meal"
+                    ? "bg-[#5F252D] text-[#F4EFE6] shadow-sm font-semibold"
+                    : "text-[#5A5048] hover:text-[#1D1A17] hover:bg-[#FAF9F5]/60"
                 }`}
-              />
-            </button>
+              >
+                <span>🍽️</span>
+                <span>{lang === "kn" ? "ಕ್ಯುರೇಟೆಡ್ ತಟ್ಟೆಗಳು (೬)" : "Curated Meals"}</span>
+              </button>
 
-            {doorDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-64 bg-[#FAF9F5] border border-[#D9CFBF] rounded-2xl shadow-xl py-2 z-30 animate-in fade-in slide-in-from-top-2 duration-150">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setShopDoor("meal");
-                    setDoorDropdownOpen(false);
-                  }}
-                  className={`w-full text-left px-4 py-3 flex items-center justify-between text-sm transition-smooth hover:bg-[#E9DFCE]/60 cursor-pointer ${
-                    shopDoor === "meal"
-                      ? "text-[#5F252D] font-semibold bg-[#E9DFCE]/50"
-                      : "text-[#1D1A17]"
-                  }`}
-                >
-                  <div className="flex flex-col">
-                    <span className="font-serif-brand text-base">
-                      {lang === "kn" ? "ತಟ್ಟೆಯಂತೆ" : "By meal"}
-                    </span>
-                    <span className="text-xs text-[#7C6F64] font-normal">
-                      {lang === "kn" ? "೬ ವಿಶಿಷ್ಟ ಊಟದ ತಟ್ಟೆಗಳು" : "Curated meal moments (6 plates)"}
-                    </span>
-                  </div>
-                  {shopDoor === "meal" && (
-                    <Check className="w-4 h-4 text-[#5F252D] shrink-0" />
-                  )}
-                </button>
-
-                <div className="border-t border-[#E9DFCE] my-1" />
-
-                <button
-                  type="button"
-                  onClick={() => {
-                    setShopDoor("category");
-                    setDoorDropdownOpen(false);
-                  }}
-                  className={`w-full text-left px-4 py-3 flex items-center justify-between text-sm transition-smooth hover:bg-[#E9DFCE]/60 cursor-pointer ${
-                    shopDoor === "category"
-                      ? "text-[#5F252D] font-semibold bg-[#E9DFCE]/50"
-                      : "text-[#1D1A17]"
-                  }`}
-                >
-                  <div className="flex flex-col">
-                    <span className="font-serif-brand text-base">
-                      {lang === "kn" ? "ವಿಭಾಗದಂತೆ" : "By category"}
-                    </span>
-                    <span className="text-xs text-[#7C6F64] font-normal">
-                      {lang === "kn" ? "೮ ಸಾಂಪ್ರದಾಯಿಕ ಆಹಾರ ಕುಟುಂಬಗಳು" : "The 8 food families"}
-                    </span>
-                  </div>
-                  {shopDoor === "category" && (
-                    <Check className="w-4 h-4 text-[#5F252D] shrink-0" />
-                  )}
-                </button>
-              </div>
-            )}
+              <button
+                type="button"
+                onClick={() => setShopDoor("category")}
+                className={`px-5 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 cursor-pointer ${
+                  shopDoor === "category"
+                    ? "bg-[#5F252D] text-[#F4EFE6] shadow-sm font-semibold"
+                    : "text-[#5A5048] hover:text-[#1D1A17] hover:bg-[#FAF9F5]/60"
+                }`}
+              >
+                <span>🏺</span>
+                <span>{lang === "kn" ? "೮ ಆಹಾರ ವಿಭಾಗಗಳು" : "The 8 Food Families"}</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -263,7 +281,7 @@ export function ShopSection() {
         {/* DOOR 2: SHOP BY CATEGORY */}
         {shopDoor === "category" && (
           <div className="flex flex-col gap-8 animate-in fade-in duration-300">
-            {/* Category Filter Chips */}
+            {/* Category Filter Chips (Positioned naturally below the segmented switch) */}
             <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
               <button
                 onClick={() => setSelectedFamilyId("all")}
@@ -302,113 +320,140 @@ export function ShopSection() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProducts.map((prod) => {
                 const activeVariant = getProductVariant(prod);
-                const family = FOOD_FAMILIES.find((f) => f.id === prod.familyId);
+                const currentNoteLang = getNoteLang(prod.id);
 
                 return (
                   <div
                     key={prod.id}
-                    className="bg-[#FBF8F2] border border-[#E2D9CA] rounded-2xl p-6 flex flex-col justify-between gap-5 hover:shadow-md transition-smooth relative overflow-hidden"
+                    className="bg-[#FBF8F2] border border-[#E2D9CA] rounded-2xl flex flex-col justify-between hover:shadow-md transition-smooth relative overflow-hidden group"
                   >
-                    {/* Top family accent bar */}
-                    <div
-                      className="absolute top-0 left-0 right-0 h-1.5"
-                      style={{ backgroundColor: prod.accentColor }}
-                    />
+                    {/* 1. Rich Product Visual Header (Replaces the thin maroon bar) */}
+                    <ProductCardVisual prod={prod} lang={lang} />
 
-                    <div>
-                      {/* Family */}
-                      <div className="flex items-center justify-between text-xs text-[#6B6157] mb-2">
-                        <span className="font-semibold uppercase tracking-wider text-[11px]" style={{ color: prod.accentColor }}>
-                          {lang === "kn" ? family?.kannadaName : family?.name}
-                        </span>
-                      </div>
-
-                      {/* Title & Tagline */}
-                      <h3
-                        onClick={() => setActiveProductModal(prod)}
-                        className="font-serif-brand text-2xl text-[#1D1A17] font-normal hover:text-[#5F252D] transition-smooth cursor-pointer"
-                      >
-                        {lang === "kn" ? prod.kannadaTitle : prod.title}
-                      </h3>
-                      <p className="text-xs text-[#5A5048] mt-1 italic">
-                        {prod.tagline}
-                      </p>
-
-                      {/* Amma's Note Teaser */}
-                      <div
-                        onClick={() => setActiveProductModal(prod)}
-                        className="mt-4 p-3 bg-[#FAF9F5] border border-[#E2D9CA] rounded-xl text-xs text-[#5A5048] cursor-pointer hover:border-[#5F252D]/40 transition-smooth group/note"
-                      >
-                        <div className="flex items-center justify-between font-semibold text-[#5F252D] mb-1">
-                          <span>{lang === "kn" ? "ಅಮ್ಮನ ಮಾತು" : "Amma's note"}</span>
-                          <Info className="w-3.5 h-3.5 text-[#5F252D] opacity-70 group-hover/note:opacity-100" />
-                        </div>
-                        <p className="line-clamp-2 leading-relaxed">
-                          {prod.ammaNote}
+                    {/* 2. Card Content Body */}
+                    <div className="p-5 sm:p-6 flex flex-col justify-between flex-1 gap-5">
+                      <div>
+                        {/* Title & Tagline */}
+                        <h3
+                          onClick={() => setActiveProductModal(prod)}
+                          className="font-serif-brand text-2xl text-[#1D1A17] font-normal hover:text-[#5F252D] transition-smooth cursor-pointer"
+                        >
+                          {lang === "kn" ? prod.kannadaTitle : prod.title}
+                        </h3>
+                        <p className="text-xs text-[#5A5048] mt-1 italic">
+                          {prod.tagline}
                         </p>
-                      </div>
-                    </div>
 
-                    {/* Weight Variant Pills & Price */}
-                    <div className="flex flex-col gap-3 pt-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs text-[#6B6157] font-medium">
-                          {lang === "kn" ? "ತೂಕ ಆರಿಸಿ:" : "Select size:"}
-                        </span>
-                        <div className="flex items-baseline gap-1.5">
-                          <span className="font-serif-brand text-xl text-[#1D1A17] font-medium">
-                            ₹{activeVariant.price}
-                          </span>
-                          {activeVariant.originalPrice && (
-                            <span className="text-xs text-[#6B6157] line-through">
-                              ₹{activeVariant.originalPrice}
-                            </span>
+                        {/* 3. Amma's Note with Generous Typography & 1-Click Bilingual Toggle */}
+                        <div
+                          onClick={() => setActiveProductModal(prod)}
+                          className="mt-4 p-3.5 bg-[#FAF6EE] border border-[#E2D7C3] rounded-xl cursor-pointer hover:border-[#5F252D]/40 transition-smooth group/note"
+                        >
+                          <div className="flex items-center justify-between font-semibold text-[#5F252D] mb-1">
+                            <div className="flex items-center gap-1.5 text-xs">
+                              <span>
+                                {currentNoteLang === "kn" ? "ಅಮ್ಮನ ಮಾತು" : "Amma's note"}
+                              </span>
+                              <Info className="w-3.5 h-3.5 text-[#5F252D] opacity-70 group-hover/note:opacity-100" />
+                            </div>
+
+                            {/* Bilingual Language Switcher Button */}
+                            <button
+                              type="button"
+                              onClick={(e) => toggleNoteLang(prod.id, e)}
+                              className="text-[10px] px-2 py-0.5 rounded-full border border-[#D9CFBF] bg-[#FAF9F5] text-[#5A5048] hover:text-[#5F252D] hover:border-[#5F252D] flex items-center gap-1 font-medium transition-colors"
+                              title="Toggle between Kannada and English note"
+                            >
+                              <Languages className="w-2.5 h-2.5" />
+                              <span>{currentNoteLang === "kn" ? "English" : "ಕನ್ನಡ"}</span>
+                            </button>
+                          </div>
+
+                          {/* Note text rendered with generous line-height and size for Kannada ottus */}
+                          {currentNoteLang === "kn" ? (
+                            <p className="font-kannada text-sm leading-[1.65] text-[#2C241E] mt-1">
+                              {prod.ammaNote}
+                            </p>
+                          ) : (
+                            <p className="font-sans text-xs sm:text-[13px] leading-relaxed text-[#3D352E] mt-1 italic">
+                              "{prod.ammaNoteEn || prod.ammaNote}"
+                            </p>
                           )}
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-3 gap-2">
-                        {prod.variants.map((v) => (
-                          <button
-                            key={v.id}
-                            onClick={() => handleSelectVariant(prod.id, v.id)}
-                            className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-smooth border cursor-pointer ${
-                              activeVariant.id === v.id
-                                ? "bg-[#5F252D] text-[#F4EFE6] border-[#5F252D]"
-                                : "bg-[#FAF9F5] text-[#5A5048] border-[#D9CFBF] hover:bg-[#E9DFCE]"
-                            }`}
-                          >
-                            {v.weight}
-                          </button>
-                        ))}
-                      </div>
-
-                      {/* Actions */}
-                      <div className="flex flex-col gap-2 mt-2">
-                        <button
-                          onClick={() => {
-                            addToPlate(prod, activeVariant);
-                            showToast(`Added ${lang === "kn" ? prod.kannadaTitle : prod.title} (${activeVariant.weight}) to plate!`);
-                          }}
-                          className="w-full bg-[#5F252D] hover:bg-[#461920] text-[#F4EFE6] py-3 rounded-full text-sm font-medium transition-smooth flex items-center justify-center gap-2 cursor-pointer shadow-xs"
-                        >
-                          <span>{lang === "kn" ? "ತಟ್ಟೆಗೆ ಹಾಕಿ" : "Add to plate"}</span>
-                        </button>
-
-                        <button
-                          onClick={() => {
-                            addToCustomList(prod, activeVariant);
-                            showToast(`Added to your monthly subscription list!`);
-                          }}
-                          className="w-full bg-transparent hover:bg-[#E9DFCE]/60 text-[#5F252D] border border-[#5F252D]/40 py-2 rounded-full text-xs font-medium transition-smooth flex items-center justify-center gap-1.5 cursor-pointer"
-                        >
-                          <Plus className="w-3.5 h-3.5" />
-                          <span>
-                            {lang === "kn"
-                              ? "ತಿಂಗಳ ಚಂದಾದಾರಿಕೆ ಪಟ್ಟಿಗೆ ಸೇರಿಸಿ"
-                              : "Add to my monthly subscription list"}
+                      {/* 4. Sizing Selector & Integrated Dynamic Price */}
+                      <div className="flex flex-col gap-3 pt-3 border-t border-[#E9DFCE]/80">
+                        {/* Size Label */}
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs font-semibold uppercase tracking-wider text-[#7C6F64]">
+                            {lang === "kn" ? "ತೂಕ ಆರಿಸಿ" : "Select pack"}
                           </span>
-                        </button>
+                          <span className="text-xs text-[#5F252D] font-medium">
+                            {activeVariant.weight}
+                          </span>
+                        </div>
+
+                        {/* Variant Pills */}
+                        <div className="grid grid-cols-3 gap-2">
+                          {prod.variants.map((v) => {
+                            const isSelected = activeVariant.id === v.id;
+                            return (
+                              <button
+                                key={v.id}
+                                onClick={() => handleSelectVariant(prod.id, v.id)}
+                                className={`py-2 px-2.5 rounded-xl text-xs font-semibold transition-all border cursor-pointer text-center ${
+                                  isSelected
+                                    ? "bg-[#5F252D] text-[#F4EFE6] border-[#5F252D] shadow-xs"
+                                    : "bg-[#FAF9F5] text-[#5A5048] border-[#D9CFBF] hover:bg-[#EBDCCF]/60 hover:text-[#1D1A17]"
+                                }`}
+                              >
+                                {v.weight}
+                              </button>
+                            );
+                          })}
+                        </div>
+
+                        {/* Primary CTA with Pinned Dynamic Price */}
+                        <div className="flex flex-col gap-2 pt-1">
+                          <button
+                            onClick={() => {
+                              addToPlate(prod, activeVariant);
+                              showToast(`Added ${lang === "kn" ? prod.kannadaTitle : prod.title} (${activeVariant.weight}) to plate!`);
+                            }}
+                            className="w-full bg-[#5F252D] hover:bg-[#471920] text-[#F4EFE6] py-3.5 px-4 rounded-xl text-sm font-semibold transition-smooth shadow-md hover:shadow-lg flex items-center justify-between cursor-pointer group/btn"
+                          >
+                            <span className="flex items-center gap-2">
+                              <span>{lang === "kn" ? "ತಟ್ಟೆಗೆ ಹಾಕಿ" : "Add to plate"}</span>
+                            </span>
+                            <div className="flex items-baseline gap-1.5">
+                              <span className="font-serif-brand text-lg text-[#F4EFE6] font-semibold">
+                                ₹{activeVariant.price}
+                              </span>
+                              {activeVariant.originalPrice && (
+                                <span className="text-xs text-[#EADCD8]/70 line-through">
+                                  ₹{activeVariant.originalPrice}
+                                </span>
+                              )}
+                            </div>
+                          </button>
+
+                          {/* Lightweight Secondary Subscription Action */}
+                          <button
+                            onClick={() => {
+                              addToCustomList(prod, activeVariant);
+                              showToast(`Added to your monthly subscription list!`);
+                            }}
+                            className="py-1 px-2 text-center text-xs text-[#5F252D] hover:text-[#3B151B] font-medium transition-colors flex items-center justify-center gap-1.5 cursor-pointer group/sub"
+                          >
+                            <Calendar className="w-3.5 h-3.5 text-[#5F252D]/80 group-hover/sub:scale-110 transition-transform" />
+                            <span className="underline underline-offset-4 decoration-[#5F252D]/30 group-hover/sub:decoration-[#5F252D]">
+                              {lang === "kn"
+                                ? "ಪ್ರತಿ ತಿಂಗಳೂ ಕಳಿಸಿ · ೧೦% ಉಳಿತಾಯ"
+                                : "Subscribe monthly & save 10%"}
+                            </span>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>

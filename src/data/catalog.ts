@@ -14,6 +14,8 @@ export interface Product {
   familyId: string;
   tagline: string;
   ammaNote: string;
+  ammaNoteEn?: string;
+  image?: string;
   goesWith: string[];
   variants: ProductVariant[];
   ingredients: string;
@@ -150,6 +152,9 @@ export const PRODUCTS: Product[] = [
     tagline: "Roasted Niger seed, Byadgi chilli & garlic",
     ammaNote:
       "ಗುರೆಳ್ಳನ್ನು ಸಣ್ಣ ಉರಿಯಲ್ಲಿ ಪರಿಮಳ ಬರುವವರೆಗೆ ಹುರಿದು, ಬ್ಯಾಡಗಿ ಮೆಣಸಿನಕಾಯಿ ಮತ್ತು ಬೆಳ್ಳುಳ್ಳಿ ಜೊತೆ ಕುಟ್ಟಿದ್ದು. ಬಿಸಿ ಅನ್ನಕ್ಕೆ ತುಪ್ಪ ಬೆರೆಸಿ ತಿಂದರೆ ಬೇರೇನೂ ಬೇಡ.",
+    ammaNoteEn:
+      "Niger seeds slow-roasted on iron kadhais until nutty and aromatic, hand-pounded with dry Byadgi chillies and native garlic. Mixed with piping hot steamed rice and cow ghee, it is comfort unmatched.",
+    image: "/bharani.jpg",
     goesWith: ["Hot steamed rice & cow ghee", "Jowar rotti", "Curd rice"],
     variants: [
       { id: "gur-100", weight: "100 g", weightGrams: 100, price: 110 },
@@ -170,6 +175,9 @@ export const PRODUCTS: Product[] = [
     tagline: "Golden groundnut, crisp curry leaf & hing",
     ammaNote:
       "ದಾವಣಗೆರೆಯ ನಾಟಿ ಕಡಲೆಕಾಯಿ. ಸಿಪ್ಪೆ ತೆಗೆದು ಹದವಾಗಿ ಹುರಿದು ತಯಾರಿಸಿದ ಪುಡಿ. ಇಡ್ಲಿ, ದೋಸೆಗೆ ಎಣ್ಣೆ ಅಥವಾ ಮೊಸರು ಬೆರೆಸಿ ನೆಂಚಿಕೊಳ್ಳಿ.",
+    ammaNoteEn:
+      "Davangere native groundnuts, gently hulled and slow-roasted on low flame. Mix with cold-pressed groundnut oil or fresh thick curd to dip your crispy dosas and soft idlis.",
+    image: "/bharani.jpg",
     goesWith: ["Davangere Benne Dosa", "Thalipeeth", "Hot Paddu"],
     variants: [
       { id: "she-100", weight: "100 g", weightGrams: 100, price: 95 },
@@ -190,6 +198,9 @@ export const PRODUCTS: Product[] = [
     tagline: "Nutrient-dense roasted flaxseeds & dry garlic",
     ammaNote:
       "ಆರೋಗ್ಯಕ್ಕೆ ಅಗಸೆ ಬೀಜ ಅತಿ ಶ್ರೇಷ್ಠ. ಪ್ರತಿದಿನ ಊಟದ ಮೊದಲ ತುತ್ತಿಗೆ ಒಂದು ಚಮಚ ತುಪ್ಪದೊಂದಿಗೆ ಸವಿಯಿರಿ.",
+    ammaNoteEn:
+      "Flaxseeds are nature's quiet healer. Slow-toasted and hand-pounded with dry red chillies and fragrant garlic. Savor your meal's first morsel of rice with a spoon of Agase pudi and warm ghee.",
+    image: "/bharani.jpg",
     goesWith: ["Morning Rice porridge", "Chapati with ghee", "Ragi Rotti"],
     variants: [
       { id: "aga-100", weight: "100 g", weightGrams: 100, price: 120 },
@@ -209,6 +220,9 @@ export const PRODUCTS: Product[] = [
     tagline: "Sour green mango, whole mustard & organic jaggery",
     ammaNote:
       "ಮಾವಿನಕಾಯಿಯ ಹುಳಿ, ಬೆಲ್ಲದ ಸಿಹಿ ಮತ್ತು ಮೆಣಸಿನಕಾಯಿಯ ಖಾರ ಸಮತೋಲನವಾಗಿ ಸೇರಿದಾಗ ನಾಲಿಗೆಗೆ ಹಬ್ಬ.",
+    ammaNoteEn:
+      "The sharp tang of country mangoes simmered slowly with organic jaggery and roasted mustard seeds. When sour, sweet, and spice find balance, every meal becomes a festival.",
+    image: "/bharani.jpg",
     goesWith: ["Curd rice", "Akki Rotti", "Hot poori"],
     variants: [
       { id: "mvg-100", weight: "100 g", weightGrams: 100, price: 130 },
@@ -229,6 +243,9 @@ export const PRODUCTS: Product[] = [
     tagline: "Wild Indian Hog Plum matured in cold-pressed oil",
     ammaNote:
       "ಮಲೆನಾಡ ಕಾಡಿನ ಅಮ್ತೆಕಾಯಿ. ಮಣ್ಣಿನ ಭರಣಿಯಲ್ಲಿ ಮೂರು ತಿಂಗಳು ಉಪ್ಪಿನಲ್ಲಿ ಮಾಗಿಸಿ ಹದವಾಗಿ ಒಗ್ಗರಣೆ ಕೊಟ್ಟದ್ದು.",
+    ammaNoteEn:
+      "Wild Hog Plums gathered from Malnad forests, aged for three full months inside earthen ceramic bharanis in sea salt brine, then seasoned in cold-pressed sesame oil.",
+    image: "/bharani.jpg",
     goesWith: ["Rice ganji on a rainy day", "Curd rice", "Majjige huli anna"],
     variants: [
       { id: "amt-100", weight: "100 g", weightGrams: 100, price: 140 },
@@ -249,6 +266,9 @@ export const PRODUCTS: Product[] = [
     tagline: "Kapok buds, stone flower, cinnamon & 14 spices",
     ammaNote:
       "ಮರಾಠಿ ಮೊಗ್ಗು ಮತ್ತು ಕಲ್ಲು ಹೂವಿನ ಪರಿಮಳವೇ ಈ ಪುಡಿಯ ಜೀವ. ಮನೆಯಲ್ಲಿ ಮಾಡಿದಾಗ ಇಡೀ ಬೀದಿಗೆ ಕಂಪು ಹರಡುತ್ತದೆ.",
+    ammaNoteEn:
+      "Aromatic kapok buds (Marathi Moggu) and stone flower give this masala its unmistakable soul. When cooking on the stove, the fragrant aroma drifts across the whole street.",
+    image: "/bharani.jpg",
     goesWith: ["Traditional Bisi Bele Bath", "Khara Pongal", "Vegetable Khichdi"],
     variants: [
       { id: "bbb-100", weight: "100 g", weightGrams: 100, price: 125 },
@@ -269,6 +289,9 @@ export const PRODUCTS: Product[] = [
     tagline: "Sun-dried ash gourd and spiced urad dal pearls",
     ammaNote:
       "ಕುಂಬಳಕಾಯಿಯ ನೀರು ಬಸಿದು, ಉದ್ದಿನ ಬೇಳೆಯೊಂದಿಗೆ ರುಬ್ಬಿ ಎಳೆ ಬಿಸಿಲಿನಲ್ಲಿ ಒಣಗಿಸಿದ ಸಂಡಿಗೆ. ಕರಿದಾಗ ನಾಲಿಗೆಯಲ್ಲಿ ಕರಗುತ್ತದೆ.",
+    ammaNoteEn:
+      "Fresh ash gourd strained overnight, ground with spiced urad dal and sun-dried on terrace cotton sheets. Puffs up delicately and melts on your tongue the moment it is fried.",
+    image: "/bharani.jpg",
     goesWith: ["Saaru Anna (Rasam Rice)", "Majjige Saaru", "Tomato Bath"],
     variants: [
       { id: "bks-100", weight: "100 g", weightGrams: 100, price: 115 },
@@ -288,6 +311,9 @@ export const PRODUCTS: Product[] = [
     tagline: "Hand-pressed rice crackers with crushed peanuts & curry leaves",
     ammaNote:
       "ಅಜ್ಜಿಯ ಕಾಲದ ಹದ. ಕೈಯಲ್ಲೇ ತಟ್ಟಿ, ಕಾದ ಕಡಲೆಕಾಯಿ ಎಣ್ಣೆಯಲ್ಲಿ ಗರಿಗರಿಯಾಗಿ ಕರಿದ ನಿಪ್ಪಟ್ಟು. ಸಂಜೆಯ ಕಾಫಿ ಜೊತೆ ಹೇಳಿಮಾಡಿಸಿದ ತಿನಿಸು.",
+    ammaNoteEn:
+      "Grandmother's heirloom rhythm. Flattened by hand and crisp-fried in cold-pressed groundnut oil with roasted peanuts and fresh curry leaves. Made for evening filter coffee.",
+    image: "/bharani.jpg",
     goesWith: ["Evening Filter Coffee", "Sulaimani Chai", "Dry Chutney dip"],
     variants: [
       { id: "nip-100", weight: "100 g", weightGrams: 100, price: 85 },
@@ -308,6 +334,9 @@ export const PRODUCTS: Product[] = [
     tagline: "Golden semolina, fresh coconut, dry fruits & pure cow ghee",
     ammaNote:
       "ತುಪ್ಪದಲ್ಲಿ ಘಮಘಮಿಸುವಂತೆ ಹುರಿದ ರವೆ, ತುರಿದ ಕೊಬ್ಬರಿ ಮತ್ತು ಯಾಲಕ್ಕಿ ಸುವಾಸನೆ. ಪ್ರತಿಯೊಂದು ಉಂಡೆಯಲ್ಲೂ ಹಬ್ಬದ ಅನುಭವ.",
+    ammaNoteEn:
+      "Fine semolina roasted golden in pure A2 cow ghee with fresh grated dry coconut, cardamom, and roasted cashews. A taste of childhood festivities in every single bite.",
+    image: "/bharani.jpg",
     goesWith: ["Festive Thali", "Afternoon sweet treat", "Travel box"],
     variants: [
       { id: "rav-100", weight: "100 g", weightGrams: 100, price: 120 },
@@ -327,6 +356,9 @@ export const PRODUCTS: Product[] = [
     tagline: "Sun-sprouted Ragi, Mamra almonds, green cardamom",
     ammaNote:
       "ಮೊಳಕೆ ಕಟ್ಟಿ ಹುರಿದ ರಾಗಿ ಜೀರ್ಣಕ್ಕೆ ಸುಲಭ, ರಕ್ತಕ್ಕೆ ಬಲ. ಬೆಳಿಗ್ಗೆ ಬೆಚ್ಚಗಿನ ಹಾಲಿನಲ್ಲಿ ಅಥವಾ ಮಜ್ಜಿಗೆಯಲ್ಲಿ ಬೆರೆಸಿ ಕುಡಿಯಿರಿ.",
+    ammaNoteEn:
+      "Whole native ragi sprouted in the morning sun, slow-roasted and ground with whole almonds. Light on digestion and deeply nourishing. Whisk into warm milk or morning buttermilk.",
+    image: "/bharani.jpg",
     goesWith: ["Warm A2 Cow Milk", "Morning fresh Majjige (Buttermilk)"],
     variants: [
       { id: "rag-100", weight: "100 g", weightGrams: 100, price: 135 },
