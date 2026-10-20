@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { useKhaadyam } from "@/context/KhaadyamContext";
 import { GiftTableSection } from "@/components/GiftTableSection";
-import { ArrowLeft, Gift, ShieldCheck, Sparkles, Heart } from "lucide-react";
+import { ArrowLeft, Sparkles } from "lucide-react";
 
 export default function GiftABasketPage() {
   const { lang } = useKhaadyam();
@@ -57,9 +57,24 @@ export default function GiftABasketPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-[#FBF8F2] border border-[#E2D9CA] rounded-2xl p-6 flex flex-col gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#5F252D]/10 flex items-center justify-center text-[#5F252D]">
-                <Heart className="w-5 h-5" />
+            {/* Promise 1: Handwritten With Real Ink (Fountain Pen Nib) */}
+            <div className="bg-[#FBF8F2] border border-[#E2D9CA] rounded-2xl p-6 flex flex-col gap-3 hover:border-[#D0C2AE] transition-smooth shadow-xs">
+              <div className="w-12 h-12 rounded-2xl bg-[#5F252D]/10 border border-[#5F252D]/20 flex items-center justify-center text-[#5F252D]">
+                <svg
+                  className="w-6 h-6 text-[#5F252D]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  {/* Calligraphy Fountain Pen Nib */}
+                  <path d="M12 2L19 9L15 13L12 10L9 13L5 9L12 2Z" fill="#5F252D" fillOpacity="0.08" />
+                  <path d="M12 10V18" />
+                  <circle cx="12" cy="15" r="1.2" fill="currentColor" />
+                  <path d="M19 9L21 21L12 18L3 21L5 9" />
+                </svg>
               </div>
               <h4 className="font-serif-brand text-lg text-[#1D1A17]">
                 {lang === "kn" ? "ಅಸಲಿ ಕೈಬರಹ ಕಾರ್ಡ್" : "Handwritten With Real Ink"}
@@ -71,9 +86,25 @@ export default function GiftABasketPage() {
               </p>
             </div>
 
-            <div className="bg-[#FBF8F2] border border-[#E2D9CA] rounded-2xl p-6 flex flex-col gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#5F252D]/10 flex items-center justify-center text-[#5F252D]">
-                <Gift className="w-5 h-5" />
+            {/* Promise 2: No Price Tags Inside (Crossed-Out Rupee Tag) */}
+            <div className="bg-[#FBF8F2] border border-[#E2D9CA] rounded-2xl p-6 flex flex-col gap-3 hover:border-[#D0C2AE] transition-smooth shadow-xs">
+              <div className="w-12 h-12 rounded-2xl bg-[#5F252D]/10 border border-[#5F252D]/20 flex items-center justify-center text-[#5F252D]">
+                <svg
+                  className="w-6 h-6 text-[#5F252D]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  {/* Price Tag Outline */}
+                  <path d="M12.5 3H6a2 2 0 0 0-2 2v6.5a2 2 0 0 0 .59 1.41l7.5 7.5a2 2 0 0 0 2.82 0l4.5-4.5a2 2 0 0 0 0-2.82l-7.5-7.5A2 2 0 0 0 12.5 3z" />
+                  <circle cx="8" cy="7" r="1.5" fill="currentColor" />
+                  {/* Crossed-out Rupee Slash */}
+                  <line x1="12" y1="10" x2="18" y2="16" stroke="#8B3A44" strokeWidth="2.2" strokeLinecap="round" />
+                  <line x1="13" y1="12" x2="16" y2="12" stroke="currentColor" strokeWidth="1.5" />
+                </svg>
               </div>
               <h4 className="font-serif-brand text-lg text-[#1D1A17]">
                 {lang === "kn" ? "ಬೆಲೆಯ ಚೀಟಿ ಇಲ್ಲದೆ ರವಾನೆ" : "No Price Tags Inside"}
@@ -85,9 +116,25 @@ export default function GiftABasketPage() {
               </p>
             </div>
 
-            <div className="bg-[#FBF8F2] border border-[#E2D9CA] rounded-2xl p-6 flex flex-col gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#5F252D]/10 flex items-center justify-center text-[#5F252D]">
-                <ShieldCheck className="w-5 h-5" />
+            {/* Promise 3: Airtight Heritage Seal (Airtight Wax Seal with Ribbons) */}
+            <div className="bg-[#FBF8F2] border border-[#E2D9CA] rounded-2xl p-6 flex flex-col gap-3 hover:border-[#D0C2AE] transition-smooth shadow-xs">
+              <div className="w-12 h-12 rounded-2xl bg-[#5F252D]/10 border border-[#5F252D]/20 flex items-center justify-center text-[#5F252D]">
+                <svg
+                  className="w-6 h-6 text-[#5F252D]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  {/* Scalloped Wax Seal Medallion */}
+                  <circle cx="12" cy="10" r="6.5" fill="#5F252D" fillOpacity="0.08" />
+                  <circle cx="12" cy="10" r="3" strokeWidth="1.4" />
+                  <path d="M12 4v2M12 14v2M6 10h2M16 10h2" strokeWidth="1.2" />
+                  {/* Hanging Wax Seal Ribbons */}
+                  <path d="M9.5 16L8 21.5L12 19.5L16 21.5L14.5 16" fill="#5F252D" fillOpacity="0.1" />
+                </svg>
               </div>
               <h4 className="font-serif-brand text-lg text-[#1D1A17]">
                 {lang === "kn" ? "ಸುವಾಸನೆ ಉಳಿಯುವ ಸೀಲ್" : "Airtight Heritage Seal"}

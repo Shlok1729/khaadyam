@@ -40,6 +40,10 @@ body {
   font-family: var(--font-kannada), -apple-system, sans-serif;
 }
 
+.font-handwriting {
+  font-family: var(--font-handwriting), "Caveat", "Snell Roundhand", "Apple Chancery", "Dancing Script", cursive;
+}
+
 /* Custom smooth transitions */
 .transition-smooth {
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);

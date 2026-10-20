@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Tenor_Sans, Noto_Sans_Kannada, Plus_Jakarta_Sans } from "next/font/google";
+import { Tenor_Sans, Noto_Sans_Kannada, Plus_Jakarta_Sans, Caveat } from "next/font/google";
 import "./globals.css";
 
 const tenorSans = Tenor_Sans({
@@ -23,6 +23,13 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-handwriting",
+  display: "swap",
+});
+
 import { Providers } from "@/components/Providers";
 
 export const metadata: Metadata = {
@@ -39,8 +46,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${tenorSans.variable} ${notoKannada.variable} ${jakarta.variable} h-full antialiased`}
+      className={`${tenorSans.variable} ${notoKannada.variable} ${jakarta.variable} ${caveat.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-[#FAF9F5] text-[#1D1A17]">
         <Providers>{children}</Providers>
       </body>
